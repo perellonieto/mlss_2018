@@ -19,7 +19,6 @@
 %\addbibresource{references.bib}
 %\printbibliography[title={Rob Fergus}]
 
-\newtheorem{theorem}{Theorem}
 
 \title{Machine Learning Summer School 2018}
 \author{Miquel Perello-Nieto}
@@ -2000,13 +1999,14 @@ may be a different one. In order to solve this the Beam Search keeps track of
 parallel best translations and is able to switch to another one at any point if
 necessary.
 
-\note{
+\begin{mybox}
 \textbf{Exploiting the hidden activation}
 
 In a Deep Neural Network huge information in the hidden layers is usually
 discarded in order to predict a class; obtaining at the end a binary
 prediction. However, the hidden information has rich information about the
-original input that can be exploited.}
+original input that can be exploited.
+\end{mybox}
 
 By using the hidden information the performance of several methods was
 increased \cite{gu2016learning}.
@@ -2042,13 +2042,13 @@ previous example).
 
 A \emph{confounder} is a latent common cause:
 
-\note{
+\begin{mybox}
   $H$ is a confounder of $X$ and $Y$ if:
   \begin{enumerate}
     \item $H$ causes $X$ directly w.r.t. $\{X, Y, H\}$
     \item $H$ causes $Y$ directly w.r.t. $\{X, Y, H\}$
   \end{enumerate}
-}
+\end{mybox}
 
 We will denote latent confounders by \emph{bidirected edges} in a causal graph.
 
@@ -2059,7 +2059,7 @@ we may make wrong decisions. As an example, shows the recovery rate of a drug
 test in which depending on the groups separation the most probable outcome
 changes.
 
-\note{
+\begin{mybox}
 \begin{enumerate}
   \item The probability of recovery is higher for patients that took the drug
     \begin{align}
@@ -2073,7 +2073,7 @@ changes.
       female})
     \end{align}
 \end{enumerate}
-}
+\end{mybox}
 
 \emph{endogenous variables} are binary variables that we are interested in.
 
@@ -2095,17 +2095,17 @@ There is one Structural equations  per endogenous variable.
 An augmented functional graph $G^a(M)$ depicts the exogenous variables while
 the functional graph $G(M)$ doesn't.
 
-\note{
+\begin{mybox}
   If $M$ has no \emph{self-loops}, the causal graph of $M$ is a subgraph of the
   functional graph $G(M)$.
-}
+\end{mybox}
 
-\note{
-  \textbf{Definition}
+\begin{mybox}
+\textbf{Definition}
 
-  We call the family of sets of probability distributions of the solutions of
-  $M_{do(l,E_l)}$ \dots
-}
+We call the family of sets of probability distributions of the solutions of
+$M_{do(l,E_l)}$ \dots
+\end{mybox}
 
 some of the previous points are teh basic difference between causal models and
 probabilistic models.
@@ -2114,8 +2114,9 @@ We donote a marginalization of the model $M$ with respect two variables $X_2$
 and $X_4$ as $M^{\backslash\{2,4\}}$.
 
 See the following extra references \cite{de2013global}, and
-\cite{bongers2018random}, Blom and Mooij, 2018 \cite{blom2018generalized},
+\cite{bongers2018random}, \cite{blom2018generalized},
 Bongers et al., 2018.
+
 
 \end{document}
 

@@ -25,20 +25,25 @@
 \setlength\epigraphrule{0pt}
 \newcommand{\myepigraph}[2]{\epigraph{``#1''}{\textup{--- #2}}}
 
+
+%% For square notes notes
+\newcommand{\note}[1]{
+\vspace{1ex} \colorbox{black!10}{
+  \begin{minipage}{.9\textwidth}#1\end{minipage}}
+\vspace{1ex}}
+
+% For corner rounded box
 \usepackage{tcolorbox}
+\newenvironment{mybox}{
+\centering
+\begin{tcolorbox}[
+    colback=black!10,
+    colframe=black!10,
+    width=.95\textwidth,
+    arc=3mm,
+]
+}
+{\end{tcolorbox}
+}
 
-%% For notes
-\newcommand{\note}[1]{\vspace{1ex} \colorbox{black!10}{
-                      \begin{minipage}{.9\textwidth}#1\end{minipage}}
-                      \vspace{1ex}}
-
-%\newcommand{\note}[1]{
-%\begin{tcolorbox}[
-%    rounded corners,
-%    colback=black!10,
-%    colframe=black!10,
-%    arc=5mm,
-%]
-%\begin{minipage}{.9\textwidth}#1\end{minipage}
-%\end{tcolorbox}
-%}
+\newtheorem{theorem}{Theorem}
