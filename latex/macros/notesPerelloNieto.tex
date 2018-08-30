@@ -1,0 +1,44 @@
+%% YEARS
+\newcommand{\marginyear}[1]{\marginpar{\color{red}#1}}
+\newcommand{\marginYear}[1]{#1\marginpar{\color{red}#1}}
+%% AUTHORS BIBLIOGRAPHY
+% \marginauthor{name}{place of born}{years}{description}
+\newcommand{\marginauthor}[4]{\footnote{\textbf{#1} (#2; #3) #4}}
+\newcommand{\authormark}{\footnotemark{} }
+\newcommand{\authortext}[4]{\footnotetext{\textbf{#1} (#2; #3) #4}}
+%% It is not possible to put several authormarks in a row
+%% it has to be done in the next way:
+%% \cite{Rashevsky1938}
+% \authormark \authormark \authormark
+% \addtocounter{footnote}{-3}
+% \stepcounter{footnote}
+% \authortext{}{}{}{}
+% \stepcounter{footnote}
+% \authortext{}{}{}{}
+% \stepcounter{footnote}
+% \authortext{}{}{}{}
+
+%% FOR epigraphs
+\usepackage{epigraph}
+\renewcommand{\epigraphsize}{\small\itshape}
+\setlength\epigraphwidth{8cm}
+\setlength\epigraphrule{0pt}
+\newcommand{\myepigraph}[2]{\epigraph{``#1''}{\textup{--- #2}}}
+
+\usepackage{tcolorbox}
+
+%% For notes
+\newcommand{\note}[1]{\vspace{1ex} \colorbox{black!10}{
+                      \begin{minipage}{.9\textwidth}#1\end{minipage}}
+                      \vspace{1ex}}
+
+%\newcommand{\note}[1]{
+%\begin{tcolorbox}[
+%    rounded corners,
+%    colback=black!10,
+%    colframe=black!10,
+%    arc=5mm,
+%]
+%\begin{minipage}{.9\textwidth}#1\end{minipage}
+%\end{tcolorbox}
+%}
