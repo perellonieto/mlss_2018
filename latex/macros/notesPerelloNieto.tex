@@ -46,4 +46,10 @@
 {\end{tcolorbox}
 }
 
-\newtheorem{theorem}{Theorem}
+
+\usepackage{amsthm}
+\theoremstyle{plain}
+\newtheorem{theorem}{Theorem}[chapter] % reset theorem numbering for each chapter
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition} % definition numbers are dependent on theorem numbers
+

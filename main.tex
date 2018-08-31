@@ -1,7 +1,8 @@
 \documentclass[b5paper]{report}
 \usepackage[left=1cm, right=1cm, top=3cm, bottom=3cm]{geometry}
 \usepackage[utf8]{inputenc}
-\usepackage{hyperref}
+%\usepackage{hyperref}
+\usepackage[hidelinks]{hyperref}
 \usepackage{amsmath,amssymb}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
@@ -29,7 +30,8 @@
 \maketitle
 \tableofcontents
 
-\bibliographystyle{apalike}
+%\bibliographystyle{apalike}
+\bibliographystyle{abbrv}
 \bibliography{references}
 
 \chapter{Introduction}
@@ -1302,11 +1304,11 @@ Automatic learning of images and audio from videos \cite{Owens2016}. This
 method shows how it is possible to know the source of a sound from an image,
 some examples show people talking and rainfalls.
 
-Map every image into a hypersphere \citet{bojanowski2017}, hopefully similar
+Map every image into a hypersphere \cite{bojanowski2017}, hopefully similar
 images will fall into nearby regions?
 
 Unsupervised learning of visual representations using videos
-\citep{wang2015unsupervised}
+\cite{wang2015unsupervised}
 
 \section{Deep Learning Models Rob Fergus 9:30--11:00}
 
@@ -2100,12 +2102,10 @@ the functional graph $G(M)$ doesn't.
   functional graph $G(M)$.
 \end{mybox}
 
-\begin{mybox}
-\textbf{Definition}
-
+\begin{definition}
 We call the family of sets of probability distributions of the solutions of
 $M_{do(l,E_l)}$ \dots
-\end{mybox}
+\end{definition}
 
 some of the previous points are teh basic difference between causal models and
 probabilistic models.
@@ -2118,5 +2118,365 @@ See the following extra references \cite{de2013global}, and
 Bongers et al., 2018.
 
 
-\end{document}
+\begin{definition}
+  Definitions of: Independence and conditional independence
+\end{definition}
 
+\begin{definition}
+  Definition of: nodes blocking a path
+\end{definition}
+
+\begin{theorem}
+  For an \emph{acyclic} SCM, \dots
+\end{theorem}
+
+\emph{Reichenbach's} principle of common cause, the dependence $X | Y$
+
+The Reichenbach's Principe may fail in case of \emph{selection bias} (related
+with the explaining away problem)
+
+
+\section{Causal Inference: Predicting Causal Effects}
+
+\begin{theorem}
+  Back-Door Criterion \cite{pearl2000causal}
+\end{theorem}
+
+\section{Resolving Simpson's paradox}
+
+It is important to realize that ``seing'' is not the same as ``doing''.
+
+\begin{itemize}
+  \item $p(R = 1|D = 1)$: the probability that somebody recovers, given the
+    observation that the person took the drug.
+  \item $p(R = 1| \text{do}(D=1))$: the probability that somebody recovers, if
+    we force the person to take the drug.
+\end{itemize}
+
+In practice randomized control trial
+
+\begin{mybox}
+  A \textbf{randomized controlled trial} (or randomized control trial;[2] RCT) is a type
+of scientific (often medical) experiment which aims to reduce bias when testing
+a new treatment. The people participating in the trial are randomly allocated
+to either the group receiving the treatment under investigation or to a group
+receiving standard treatment (or placebo treatment) as the control.
+Randomization minimises selection bias and the different comparison groups
+allow the researchers to determine any effects of the treatment when compared
+with the no treatment (control) group, while other variables are kept constant.
+The RCT is often considered the gold standard for a clinical trial. RCTs are
+often used to test the efficacy or effectiveness of various types of medical
+intervention and may provide information about adverse effects, such as drug
+reactions. Random assignment of intervention is done after subjects have been
+assessed for eligibility and recruited, but before the intervention to be
+studied begins. -- \textbf{Wikipedia}
+\end{mybox}
+
+\section{Causal Discovery: from data to causal graph}
+
+Randomized controlled trials \cite{fisher1935design} are one solution to avoid
+previously seen problems.
+
+\begin{enumerate}
+  \item Divide patients into two groups: treatment and control randomly
+  \item Patients with the treatment group are forced to take a drug, and
+    patients in the group are forced to not take the drug (but to take a
+    placebo instead): $D = C$
+  \item Estimating the causal effect of the drug now becomes a standard \dots
+  \item \dots
+\end{enumerate}
+
+\subsection{Local Causal Discovery (LCD)}
+
+Simple method that Joris Mooij likes
+
+\section{Practical aplication}
+
+It is possible to apply $k$-fold Cross-validation to the observational data and
+interventional data in order to estimate the test performance.
+
+\section{Conclusions}
+
+Additional readings: Causality: Models reasoning and inference, pearl 2000.
+Constraint-based causal discovery for non-linear
+
+\begin{itemize}
+  \item Elements of causal inference, foundations and learning algorithms by
+    Peters, Janzing, Scholkopf 2017 %\cite{peters2017elements}
+  \item Causation, prediction and search by spirtes, glymour, scheines 2000
+    %\cite{spirtes2000causation}
+  \item correlation and causation by Wrights 1921
+  \item Causal inference in statistics: an overview by Pearl 2009
+  \item Simpson's paradox: an anatomy by Pearl 1999 %\cite{pearl1999simpson}
+  \item Causality: models, reasoning and inference by Pearl 2000
+    %\cite{pearl2003causality}
+  \item Theoretical aspects of cyclic structural causal models by
+    Bongers, Peters, Scholkopf, Mooij 2018 %\cite{bongers1611theoretical}
+  \item Markov properties for graphical models with cycles and latent
+    variables by Forré, and Mooij 2017 %\cite{forre2017markov}
+\end{itemize}
+
+Some possible aplications of Causal inference could be:
+
+\begin{itemize}
+  \item Transfer learning
+  \item Domain adaptation
+  \item Reinforcement learning
+\end{itemize}
+
+What tools or framewors: \textbf{there are no tools yet}, R package for
+individual methods. Literature and the implementations are scattered,
+\textbf{necessary to unify!}.
+
+\chapter{Reinforcement Learning by Jan Peters, Fri. 14:30--16:00}
+
+\section{Optimal Control Systems}
+
+Data to model to value function to policy back then to data.
+
+\subsection{Markov Decision Problems}
+
+A stationary MDP is defined as
+
+\begin{itemize}
+  \item a state space $s \in S$
+  \item action space $a \in A$
+  \item transition dynamics $P(s_{t+1}| s_t, a_t)$
+  \item reward function $r(s,a)$
+  \item initial state probabilities $\mu_0(s)$
+\end{itemize}
+
+The Markov property says that the transition dynamics depends only on the
+current time step.
+
+\begin{equation}
+  P(s_{t+1}|s_t, a_t, s_{t-1}, a_{t-1}, \dots) = P(s_{t+1}|s_t, a_t)
+\end{equation}
+
+
+\subsection{Basic reinforcement learning loop}
+
+The objective is to maximize the expected long-term reward
+
+\begin{equation}
+  J_\theta = \Expected_{\mu_0, P, \pi} [\sum_{t=1}^{T-1}\gamma^t r(s_t, a_t)]
+\end{equation}
+
+The algorithmic description of the value iteration
+
+\begin{itemize}
+  \item Init: $V_T^*(s) \leftarrow r_T(s), t=T$
+    \begin{itemize}
+      \item Compute Q-Function for time step t (for each state action pair)
+        \begin{equation}
+          Q_t^*(s,a) = r_t(s,a) + \gamma \sum_{s'} P_t (s'|s,a)V_{t+1}^*(s')
+        \end{equation}
+      \item Compute V-Function for time step t(for each state) (TODO, check if
+        next equation is max or argmax)
+        \begin{equation}
+          V_t^*(s) = \max_a Q_t^*(s,a)
+        \end{equation}
+    \end{itemize}
+  \item Repeat: $t=t-1$
+  \item Until $t=1$
+  \item REturn: Optimal policy for each time step
+    \begin{equation}
+      \pi_t^*(s) = \argmax_a Q_t^*(s,a)
+    \end{equation}
+\end{itemize}
+
+The Bellman Equation (Bellman Principle of Optimality)
+
+\begin{equation}
+  V^*(s) = \max_a (r(s,a) + \gamma \Expected_p[V^*(s')|s,a)
+\end{equation}
+
+
+See Policy evaluation with temporal differences: a survey and comparison
+\cite{dann2014policy}
+
+When the max is expensive is possible to use the \emph{Policy Iteration}
+method:
+
+\begin{enumerate}
+  \item Policy evaluation: Estimate quality of states (and actions) with
+    current policy
+  \item Policy improvement: Improve policy by taking actions with the highest
+    quality
+\end{enumerate}
+
+\subsection{Linear Quadratic Gaussian Systems}
+
+A Linear Quadratic Regulator (LQR) system is defined as
+
+\begin{itemize}
+  \item state space $x in \Real^n$
+  \item action space $u in \Real^m$
+  \item linear transition dynamics with Gaussian noise
+    \begin{equation}
+      p_t(x_{t+1}|x_t, u_t) = \Normal(x_{t+1}|A_t x_t + B_t u_t + b_t, \Sigma_t)
+    \end{equation}
+  \item quadratic reward function
+    \begin{align}
+      r_t(x,u) =& (x-r_t)^T R_t(x-r_t) + u_t^T H_t u_t \\
+      r_t(x) =& (x-r_T)^T R_T(x-r_T)
+    \end{align}
+  \item initial state density
+    \begin{equation}
+      \mu_0(x) \Normal(x|\mu_0, \Sigma_0)
+    \end{equation}
+\end{itemize}
+
+See Stefan Schaal, Christopher G. Atkeston 1998 \cite{schaal1998constructive}
+
+The LQR systems need the initial point to be linearly related to the optimal
+point (eg. keeping a stick balanced upwards). However, they can not solve
+situations in which it is necessary a non-linear component (eg. if the stick
+  starts from a hanging position, and it needs some sinuidal movement before it
+can reach the upward position).
+
+See work by Emo Todorov and Yuval Tassa on Incremental LQG (a simplification of
+  Differential Dynamic Programming by Dyer and McReynolds 1969
+\cite{dyer1969optimization})
+
+With Optimal control we can compute optimal policies but only on
+
+\begin{enumerate}
+  \item Discrete Systems: (but world is not discrete)
+  \item Linear Systems, Quadratic Reward, Gaussian Noise (LQR): (but the world
+    is not linear)
+  \item Along an optimal trajectory: (it is really hard to find)
+\end{enumerate}
+
+For these reasons we need to approximate.
+
+\section{Value Function Methods}
+
+Data to value function to policy to data.
+
+One of the principles is that ``all models are wrong, but some are useful''. In
+the previous section we created perfect models, but they may not be match the
+real world. In that case, there can be drastical problems.
+
+The \emph{Classical Reinforcement Learning} postulate is to solve the optimal
+control problem by learning the value function and not the model.
+
+\subsection{Markov Decision Processes (MDP)}
+
+Infinite Horizon with a discounted reward parameter $\gamma$
+
+Updates the value function based on samples $D = \{s_i, a_i, r_i, s_i'\}$
+
+\subsection{Temporal difference learning}
+
+We are incorporating an error value into the prediction of the states (see
+  Reinforcement learning, rich sutton and andy barto, 1998
+  \cite{sutton1998reinforcement}.
+
+Withe our estimate we can compute the TD error and make a decision
+
+\begin{itemize}
+  \item if the estimation was higher, we decrease the prediction
+  \item if the estimation was lower, we increase the prediction
+\end{itemize}
+
+\begin{enumerate}
+  \item Init $V_0^*(s) \leftarrow 0$
+  \item Repeat $t=t+1$
+    \begin{itemize}
+      \item Observe transition $(s_t,a_t,r_t,s_{t+1})$
+      \item Compute TD error $\delta_t = r_t + \gamma V_t(s_{t+1}) - V_t(s_t)$
+      \item Update V-Function $V_{t+1}(s_t) = V_t(s_t) + \alpha\delta_t$
+    \end{itemize}
+  \item until convergence of $V$
+\end{enumerate}
+
+But we do not want deterministic policies as these will not explore the space,
+for that reason there are at least two policy for exploration
+
+\begin{enumerate}
+  \item Epsilon-Greedy Policy
+  \item Soft-Max Policy (it has an important temperature parameter $\beta$)
+\end{enumerate}
+
+Update equations for learning the Q-function $Q(s,a)$
+
+\begin{equation}
+  Q_{t+1}(s_t,a_t) =  \dots
+\end{equation}
+
+In wich it is necessary to estimate the future action $a_?$. There are two
+methods
+
+\begin{enumerate}
+  \item Q-learning: $a_? = \argmax_a Q_t(s_{t+1}, a)$
+  \item SARSA: $a_? = a_{t+1}$, where $a_{t+1} \from \pi(a|s_{t+1})$
+\end{enumerate}
+
+\subsection{Approximating the value function}
+
+Instead of creating the matrix $V$ we can approximate with any function
+approximation method (see Dann et al: Policy evaluation with temporal
+differences: a survey and comparison, JMLR, 2014 \cite{dann2014policy}).
+
+Some remarks on temporal difference learning
+
+\begin{itemize}
+  \item It si not a proper stochastic gradient descent
+  \item As the target values $V^\pi(s)$ change after each parameter update
+  \item This ``ignoreance'' introduces a bias in our optimization 
+  \item \dots
+\end{itemize}
+
+\subsection{Batch-Mode Reinforcement Learning}
+
+Online methods are typically data-inefficient as they use only once every
+sample. The rehuse of the samples has been done in Least-squares temporal
+difference learning and fitted q-iteration (Tree-Based batch mode reinforcement
+learning \cite{ernst2005tree}, Batch reinforcement learning
+\cite{lange2012batch}).
+
+In Q-iteration we do as in Value-iteration, but we use Supervised Learning
+methods to approximate the ? function.
+
+See Reinforcement learning in robot soccer, 2009
+\cite{riedmiller2009reinforcement}.
+
+
+\section{Policy Search}
+
+From data to policy and back to data.
+
+see Reinforcement learning of motor skills with policy gradients, 2008
+\cite{peters2008reinforcement}.
+
+\subsection{Black-box approaches}
+
+
+\begin{itemize}
+  \item Perturb the parameters of your policy: $\delta J = J(\theta + \delta
+    \theta) - J(\theta)$
+  \item Approximate J by the first order Taylor approximation $J(\theta +
+    \delta\theta) = J(\theta) + \frac{\partial
+    J(\theta)}{\partial\theta}\delta\theta$
+  \item Solve for $\frac{\partial J(\theta)}{\partial \theta}$ in a least
+    squares sense (linear regresssion).
+\end{itemize}
+
+See a large classs of algorithms includes: Kiefer-Wolfowitch procedure,
+Robbins-Monroe, Simultaneous Perturbation Stochastic Approximation SPSA,\dots
+
+\subsection{Likelihood-Ratio Policy Gradient methods}
+
+The expected long term reward $J(\theta)$ can be weritten as expectation over
+the trajectory distribution.
+
+\section{Key problems}
+
+\begin{enumerate}
+  \item no notion of data in the generic problem formulation
+  \item optimization bias problematic with data
+  \item role of tfeatures is unclear in most methods
+\end{enumerate}
+
+\end{document}
