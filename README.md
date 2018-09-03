@@ -10,3 +10,9 @@
 , [slides2](slides/richard_turner_gaussian_processes/turner2.pdf)
 , [slides3](slides/richard_turner_gaussian_processes/turner3.pdf)
 - Bayesian Deep Learning by Shakir Mohamed [slides](slides/shakir_mohamed_bayesian_deep_learning/mohamed.pdf)
+
+## Schedule 
+
+<p align="center">
+  <img alt="schedule" src="figures/schedule_MLSS_2018_logos.svg" vspace="20" widht="80%"/>
+</p>
