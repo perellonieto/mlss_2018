@@ -10,8 +10,15 @@
 , [slides2](slides/richard_turner_gaussian_processes/turner2.pdf)
 , [slides3](slides/richard_turner_gaussian_processes/turner3.pdf)
 - Bayesian Deep Learning by Shakir Mohamed [slides](slides/shakir_mohamed_bayesian_deep_learning/mohamed.pdf)
+- Neural Laungauge Models by Kyunghyun Cho
+ [slides1](slides/kyunghyun_cho_neural_language_models/cho1.pptx)
+,[slides2](slides/kyunghyun_cho_neural_language_models/cho2.pptx)
+,[slides3](slides/kyunghyun_cho_neural_language_models/cho3.pptx)
+,  [case1](slides/kyunghyun_cho_neural_language_models/cho_case1.pptx)
+,  [case2](slides/kyunghyun_cho_neural_language_models/cho_case2.pptx)
+,  [case3](slides/kyunghyun_cho_neural_language_models/cho_case3.pptx)
 
-## Schedule 
+## Schedule
 
 <p align="center">
   <img alt="schedule" src="figures/schedule_MLSS_2018_logos.svg" vspace="20" widht="80%"/>

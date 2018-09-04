@@ -2717,6 +2717,144 @@ location-information losses:
 
 these methods tend to be more exploratory
 
+\section{Technology at work: The future of automation Tue. 9:30--11:00}
 
+
+What are humans still good for?
+
+
+\chapter{Kernel methods by Arthur Gretton Tue. 11:30--13:00}
+
+\begin{itemize}
+  \item Testing goodnes of fit: Given a model $P$ and samples $Q$
+  \item Dependence testing
+\end{itemize}
+
+Maximum mean discrepancy (MMD)
+
+\section{Reproducing Hilbert spaces}
+
+Definition (Inner product)
+
+Let $H$ be a vector space over $\Real$. A function $k(x,x')$ is an inner
+product of $x$.
+
+\begin{theorem}
+  Sums of kernels are kernels: Given $\alpha > 0$ and $k, k_1$ and $k_2$ all
+  kernels on $\chi$, then $\alpha k$ and \dots are kernels.
+\end{theorem}
+
+\begin{theorem}
+  Products of kernels are kernels:
+\end{theorem}
+
+\begin{theorem}
+  Polynomial kernels: 
+\end{theorem}
+
+A famous infinite feature space kernel, the exponentiated quadratic kernel
+
+\begin{equation}
+  k(x, x') = \exp\left(-\frac{||x-x'||^2}{2\sigma^2}\right)
+\end{equation}
+
+Smoothness in RKHS with exponentiated quadratic kernel
+
+\begin{equation}
+  f(x) = \sum_{i=1}^m \alpha_i k(x_i, x) = \sum_{t=1}^\infty f_l [\sqrt{\lambda_l}e_l(x)]
+\end{equation}
+
+\section{Interlude: divergence measures}
+
+Integral probability metrics (substraction): wasserstein, MMD, TV
+
+\begin{equation}
+  D_H(P,Q) = \text{sup}_{g \in H} | E_{X \from P}g(X) - E_{Y \from Q}g(Y)|
+\end{equation}
+
+F-divergences: Pearson chi2, Hellinger, KL, TV
+
+\begin{equation}
+  D_f(P,Q) = \int_\chi q(x) f(\frac{p(x)}{q(x)})dx
+\end{equation}
+
+Notice the intersection TV (see \dots)
+
+\section{Two-sample testing with MMD}
+
+
+\begin{itemize}
+  \item Null hypothesis: $H_0$ when $P = Q$ \\
+    should see $\hat{MMD}^2$ close to zero
+  \item Alternative hypotesis $H_1$ when $P \ne Q$ \\
+    should see $\hat{MMD}^2$ far from zero
+\end{itemize}
+
+Set the treshold by shuffling the data from both classes and dividing into two
+sets $P$ and $Q$. Then computing the $\hat{MMD}^2$ of $P$ and $Q$.
+
+\chapter{An introduction to Bayesian nonparametrics by Sinead Williamson}
+
+\section{The Dirichlet process}
+
+\subsection{An urn representation}
+
+\begin{itemize}
+  \item Conditioned on $\phi$ \dots
+\end{itemize}
+
+\begin{align}
+  p(z_i = k| z_{i:i-1} =& \int p(z_i = k| \pi) p(\pi|z_{1:i-1} d\pi \\
+      =& \frac{\sum_{j=1}{i-1} \Indicator(z_j = k) + \alpha_k}{i - 1 + \sum_k
+      \alpha_k}
+\end{align}
+
+\subsection{Exchangeability}
+
+\begin{itemize}
+  \item Changing the order of the observation does not change the probabilities:
+    $p(r,g,g,r,b,r) = p(r,r,r,g,g,b)$
+  \item This allows us to threat every data point as if it were the las one
+    that we piked out
+\end{itemize}
+
+\subsection{Choosing the number of clusters}
+
+\begin{itemize}
+  \item The Dirichlet distribution is a great choice when there is a clear,
+    fixed number of clusters\dots but sometimes that is not the case
+  \item The finite mixture model had $K$ mixture components:
+    \begin{equation}
+      p(x_n|\pi, \{u_k\}, \{\Sigma_k\}) = \sum_{k=1}^K \pi_k \Normal(x_n|\mu_k,
+      \sigma_k)
+    \end{equation}
+  \item To make sure we never run out of clusters, no matter how many data
+    points we see, we need (countably) infinite clusters
+    \begin{equation}
+      p(x_n|\pi, \{u_k\}, \{\Sigma_k\}) = \sum_{k=1}^\infty \pi_k \Normal(x_n|\mu_k,
+      \sigma_k)
+    \end{equation}
+\end{itemize}
+
+\subsection{Constructing an appropriate prior}
+
+\begin{itemize}
+  \item Start off with w elements
+    \begin{equation}
+      \pi^{(2)} = (\pi_1^{(2)}, \pi_2^{(2)}) \from \text{Dirichlet}(\alpha/2,
+      \alpha/2)
+    \end{equation}
+  \item Split each component according to our beta
+    \begin{align}
+      \pi^{(4)} = \dots \from \text{Dirichlet}(\alpha/4,
+      \alpha/4,\alpha/4,\alpha/4)
+    \end{align}
+  \item Keep until infinity?
+    \begin{align}
+      \pi^{(K)} = \dots \from \text{Dirichlet}(\alpha/K,\dots,\alpha/K)
+    \end{align}
+\end{itemize}
+
+See Ferguson 1973 \cite{ferguson1973bayesian}
 
 \end{document}
