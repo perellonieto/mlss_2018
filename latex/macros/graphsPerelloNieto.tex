@@ -4,3 +4,22 @@
 \tikzset{main node/.style={circle,draw,minimum size=1cm, inner sep=0pt},}
 \tikzset{unobserved node/.style={circle,draw,minimum size=1cm, inner sep=0pt},}
 \tikzset{observed node/.style={circle,fill=blue!20,draw,minimum size=1cm, inner sep=0pt},}
+
+%%% Example:
+% \begin{figure}[h]
+%   \centering
+%     \begin{tikzpicture}
+%      \node[unobserved node] (d) {$D$};
+%      \node[unobserved node] (t) [below left = 0.6cm and 0.5cm of d]  {$T$};
+%      \node[observed node] (c) [below right = 0.6cm and 0.5cm of d] {$C$};
+%      \node[observed node] (y) [below left = 0.6cm and 0.5cm of c] {$Y$};
+%
+%      \path[->,thick]
+%      (d) edge node {} (t)
+%      (t) edge node {} (y)
+%      (c) edge node {} (y);
+%      \path[->,thick, color=red]
+%      (d) edge node {} (c);
+%   \end{tikzpicture}
+%   \caption{Vulnerable variables}
+% \end{figure}

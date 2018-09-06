@@ -17,6 +17,10 @@
 ,  [case1](slides/kyunghyun_cho_neural_language_models/cho_case1.pptx)
 ,  [case2](slides/kyunghyun_cho_neural_language_models/cho_case2.pptx)
 ,  [case3](slides/kyunghyun_cho_neural_language_models/cho_case3.pptx)
+- Bayesian Optimization and Probabilistic Numerics by Michael Osborne [slides1](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne1.pdf)
+,[slides2](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne2.pdf)
+,[slides3](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne3.pdf)
+
 
 ## Schedule
 
