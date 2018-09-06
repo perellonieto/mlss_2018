@@ -13,6 +13,7 @@
 \include{latex/macros/mathsPerello}
 \include{latex/macros/figurePerello}
 \include{latex/macros/notesPerelloNieto}
+\include{latex/macros/graphsPerelloNieto}
 
 % Adding multiple bibliographies
 % See here: https://tex.stackexchange.com/questions/44589/how-to-split-bibliography-for-different-sections
@@ -2749,7 +2750,7 @@ product of $x$.
 \end{theorem}
 
 \begin{theorem}
-  Polynomial kernels: 
+  Polynomial kernels:
 \end{theorem}
 
 A famous infinite feature space kernel, the exponentiated quadratic kernel
@@ -2792,6 +2793,66 @@ Notice the intersection TV (see \dots)
 
 Set the treshold by shuffling the data from both classes and dividing into two
 sets $P$ and $Q$. Then computing the $\hat{MMD}^2$ of $P$ and $Q$.
+
+\section{Training GANs with MMD Wed. 9:30--11:00}
+
+Generative Adversarial Networks are composed of a student (generator) and a
+teacher (discriminator). The student is learning to generate samples and the
+teacher is assesing if the generated samples are good or not. However, the
+student could memorize one sample and improve this one until the teacher
+asseses that it is always correct.
+
+To improve the critic witness it is possible to add convolutional features to
+be discriminated, and the teacher (critic) also needs to be trained (see MMD
+GAN Li et al, NIPS 2017 \cite{li2017mmd}, Coulomb GAN Unterthiner et al., ICLR
+2018 \cite{unterthiner2017coulomb})
+
+Another idea is WGAN-GP (see Wasserstein GAN by Arjovsky et al. ICML 2017
+\cite{arjovsky2017wasserstein}, WGAN-GP Gukrajani et al. NIPS 2017
+\cite{DBLP:journals/corr/GulrajaniAADC17}).
+
+New MMD GAN witness regulariser  (Arbel, Sutherland, Binkowski, G NIPS 2018),
+based on semi-supervised learning regulariser by Bousquet et al NIPS 2004.
+
+\subsection{The kernel inception distance (KID)}
+
+The kernel inception distance 8by Binkowski, sutherland, arbel G ICLR 2018)
+measures the similarity of the samples' representations in the inception
+architecture (pool3 layer) MMD with kernel
+
+\begin{equation}
+  k(x,y) = (\frac{1}{d}x^Ty+1)^3
+\end{equation}
+
+Checks match for feature means, variances and skewness. It is unbiased?.
+
+\section{Testing statistical dependence}
+
+Example with captions of images of cats and dogs. First we obtain a good kernel
+to compare images $k(x, x')$, and a good kernel to compare text $l(x, x')$.
+
+\begin{itemize}
+  \item Given: samples from a distribution $P_{XY}$
+  \item Goal: are $X$ and $Y$ independent?
+    \begin{equation}
+      MMD^2(\hat{P}_{XY}, \hat{P}_X, \hat{P}_Y, H_k) =
+      \frac{1}{n^2}\text{trace}(KL)
+    \end{equation}
+\end{itemize}
+
+\subsection{Finding covariance with smooth transformations}
+
+Illustration with a variable $X$ and $Y$ with a shape of a circle perimeter
+with some gaussian noise. In this case the correlation between variables is 0,
+but with certain witness functions for $w_x(X)$ and $w_y(Y)$ we can find a
+correlation between them.
+
+\subsection{Application: dependence detection across languages}
+
+\begin{itemize}
+  \item Testing task: detect dependence between English and French text
+  \item k-spectrum kernel, $k=10$
+\end{itemize}
 
 \chapter{An introduction to Bayesian nonparametrics by Sinead Williamson}
 
@@ -2856,5 +2917,349 @@ sets $P$ and $Q$. Then computing the $\hat{MMD}^2$ of $P$ and $Q$.
 \end{itemize}
 
 See Ferguson 1973 \cite{ferguson1973bayesian}
+
+\section{Dirichlet process and Dirichlet marginals}
+
+\subsection{Conjugacy of the multinomial}
+
+\begin{itemize}
+  \item We saw that dirichlet distribution was a conjugate prior of the
+    multinomial.
+  \item This is also true for the Dirichlet process
+  \item Pick a partition $A_1,\dots,A_k$ \dots
+\end{itemize}
+
+\subsection{The Chinese restaurant process}
+
+\begin{itemize}
+  \item We can describe a sample from a DP-distributed probability distribution
+    in terms of the following restaurant metaphor
+  \item Restaurant with infinitely many tables (serving different dish)
+  \item The first person sits in the first empty table
+  \item Second person sits at the first table with probability $1/(1+\alpha)$ or
+    at a new table with $1/(1+\alpha)$.
+  \item let $m_k$ be the number of people sat at the $k$th table. The $n$th
+    customer sits at the $k$th table with probability. missing from here $m_k/(1 + \alpha)$
+
+\end{itemize}
+
+\subsection{The stick breaking construction}
+
+See Sethuraman 1994 \cite{sethuraman1994constructive}.
+
+Imagine a stick of unit lenght representing the total probability
+
+\begin{enumerate}
+  \item Sample a $Beta(1, \alpha)$ random variable $b_k$
+  \item Break a fraction $b_k$ of the stick. This is the first atom.
+  \item Sample a random location for this atom
+  \item recurse on the remaining stick to get
+  \item Repeat from $k = 1,2,\dots$
+\end{enumerate}
+
+\subsection{Indian Buffet Process}
+
+\begin{enumerate}
+  \item A customer enters a restaurant with an infinite number of dishes
+  \item \dots
+\end{enumerate}
+
+\subsection{Bulding latent feature models using the IBP}
+
+The number of latent features (apple, skull, thread, hat,\dots) can use a
+Indian Buffet Process (IBP).
+
+\begin{itemize}
+  \item Unbounded number of latent features
+  \item Each column of the IBP corresponds to one of an infinite number of
+    features
+  item Weach row of the IB<P selects a finite subset of these features
+  \item The rich-get-richer property of the IBP ensures features are shared
+  between data points
+  \item We must pick a likelihood model that determines what the features look
+    like and how they are combined
+\end{itemize}
+
+In order to do inference in the IBP
+
+\begin{align}
+  Z \from IBP(\alpha) \\
+  A_k \from \Normal(0, \theta_A^2 \Identity) \\
+  x_n \from \Normal(z_nA^T, \sigma_X^2\Identity)
+\end{align}
+
+\subsection{Summary}
+
+\begin{itemize}
+  \item The Dirichlet process is an infinite-dimensional analoge of the
+    Dirichlet distribution
+  \item we use the Dirichlet distribution for clustering data into $K$ clusters
+  item similarly, we can use the Dirichlet process to cluster data into an
+  unbounded (and growing) number of clusters
+\item the indian buffet process is an infinite-dimensional model fro feature
+  subset selection
+\item we can use it to construct latent feature models with infinitely many
+  features
+\item we can customize the latent feature model to match our data
+\item many more building blocks --gamma process, poisson process, pitman-yor
+  process, kingman's coalescent
+\item Next, we will take a look at some hierarchical models that use the DP and
+  IBP as building blocks
+\end{itemize}
+
+
+\subsection{Latent Dirichlet allocation}
+
+Dirichlet distributions are commonly used in topic models. These models
+describe documents using a distribution over the ``topics'', where each topic
+is a distribution over words (see Latent Dirichlet Allocation by Blei et al.
+2003 \cite{blei2003latent})
+
+\begin{enumerate}
+  \item For each topic $k = 1, \dots, K$ sample a distribution over the words
+    $\beta_k \from \text{Dirichlet}(\eta_1, \dots, \eta_V)$
+\end{enumerate}
+
+\subsection{Hierarchical Dirichlet process}
+
+\begin{align}
+  G_0 \from DP(\gamma, H) \\
+  G_m \from DP(\alpha, G_0)
+\end{align}
+
+With small values of $\alpha$ the topics will be differnt, however with large
+$\alpha$ all the models will be the same.
+
+\subsection{The Chinese restaurant franchise}
+
+\begin{enumerate}
+  \item First restaurant (document)
+    \item Customers pick tables acording to a Chines restaurant process with
+      parameter $\alpha$
+    \item Each table asks their waiter to pick a dish
+    \item The waiter considers all the dishes that have been served previously
+      in the franchise
+\begin{itemize}
+  \item Since it is the first restaurant the first table gets a new dish
+  \item Second table gets the previous dish with probability $1/(1+\gamma)$ or
+    a new otherwise
+    \item Keep going like the previous example of a Chinese restaurant
+\end{itemize}
+  \item The second restaurant
+  \item The costumers pick tables according to a Chinese restaurant process
+    with parameter $\alpha$ (from all the possible tables seen in all the
+    franchises)
+  \item \dots
+\end{enumerate}
+
+\subsection{Basic network models: Erdös-Renyi models}
+
+\section{Further resources}
+
+\begin{itemize}
+  \item A tutorial on bayesian nonparametric models, S.j. gershman and D.M.
+    Beli
+  \item The introduction of Erik Sudderth's PhD thesis
+  \item Markov chain sampling methods for Dirichlet process mixture models, RM
+    Neal, Journal of computational and graphical statistics, 2000
+  \item Python: bnpy-dev, PyIBP
+  \item Julia: BNP.jl
+\end{itemize}
+
+\chapter{Machine Learning and Causal Inference for (Reliable) Decision Support.
+  by Suchi Saria Wed. 16:30--18:00}
+
+Algorithmic fairness (eg. suitability of an applicant for a job position)
+
+In a medical environment the label given to a patient after some of the
+interventions depend on the actual interventions done to the patient. Eg. if we
+have data from a patient before any intervention, and after the interventions
+we get a label about their recovery. We can not know if a similar patient is a
+right risk, because the label depends on the intervention.
+
+Suchi Saria is proposing the following
+
+\begin{itemize}
+  \item The objective is not the prediction $y$ (final label)
+  \item Recasting the problem as ``what if'': eg. what would be the outcome of
+    the patient if we didn't make any intervention?
+\end{itemize}
+
+See Caruana et al., KDD 2015 \cite{caruana2015intelligible}, Schulam and Saria,
+NIPS 2017 \cite{schulam2017reliable}
+
+An example of the use of ``what if'' formalization
+
+\begin{itemize}
+  \item You are concerned about blood pressure and if you should start to do
+    some exercise to improve it.
+  \item Formulatoin 1: What if I were to exercise?
+  \item Formulation 2: What is the effect of exercise on the blood pressure of
+    individuals like myself?
+  \item Formulation 3: What is the effect of exercise on blood pressure?
+\end{itemize}
+
+Example: Exercise and blood pressure
+
+Core assumptions: Positivity: Every subject has non-zero probability of
+receiving every treatment.
+
+Consider the confounders : covariate that has a causal effect on both the
+treatment and outcome. Eg. $X \to Z \to Y \leftarrow X$
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+   \node[main node] (z) {$Z$};
+    \node[main node] (x) [below left = 1.3cm and 0.5cm of z]  {$X$};
+    \node[main node] (y) [below right = 1.3cm and 0.5cm of z] {$Y$};
+
+    \path[->,thick]
+    (x) edge node {} (z)
+    (x) edge node {} (y)
+    (z) edge node {} (y);
+  \end{tikzpicture}
+  \caption{Causality graph}
+\end{figure}
+
+\begin{itemize}
+  \item Core assumptions: no unobserved confounders
+\end{itemize}
+
+One solution is the randomized control trial that removes one of the causal
+relations between a possible confounder $X$ and $Z$. Leaving the causal
+connections $X \to Y \leftarrow Z$
+
+\begin{itemize}
+  \item Randomize trials may be impossible
+  \item In many cases we can collect observational data
+  \item \textbf{Assumptions are not always testable from data}
+  \item \textbf{No escape}: must rely on domain knowledge
+\end{itemize}
+
+\section{Observed confounders}
+
+\subsection{Feature Matching}
+
+\begin{itemize}
+  \item Search for all the matches in your data between all the features except
+    the one being studied (pairs of treated and untreated individuals who are
+    very similar or even identical to each other).
+  \item Using any distance metric between sample inputs
+\end{itemize}
+
+See Sharma and Kiciman 2018, and Stuart 2010
+
+\subsubsection{Propensity score matching}
+
+In propensity score matching we use a supervised model $e(x)$ that predicts $Z$
+given $X$ and creates the new causal graph $X \to e(x) \to Z \to Y \leftarrow
+X$. As $e(x)$ is a d-separator, by knowing it we make independent the $X$ from
+$Z$.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+   \node[main node] (z) {$Z$};
+   \node[main node] (ex) [below left = 0.5cm and 0.3cm of z]  {$e(X)$};
+   \node[main node] (x) [below left = 0.5cm and 0.3cm of ex]  {$X$};
+   \node[main node] (y) [right = 2.0cm of x] {$Y$};
+
+    \path[->,thick]
+    (x) edge node {} (ex)
+    (ex) edge node {} (z)
+    (x) edge node {} (y)
+    (z) edge node {} (y);
+  \end{tikzpicture}
+  \caption{Causality graph}
+\end{figure}
+
+\begin{enumerate}
+  \item Estimate $e(x)$ using supervised learning
+    \begin{itemize}
+      \item Logistic regression, or other models
+      \item The score must be well-calibrated
+    \end{itemize}
+  \item Distance is the difference between the propensity scores
+    \begin{equation}
+      Distance(x_i, x_j) = |\hat{e}(x_i) - \hat{e}(x_j)|
+    \end{equation}
+  \item If the model is perfect and always predicts 1 or 0, it is not possible
+    to match the people, as everybody will fall into the same bucket (think
+    about assessing calibration when the model only makes predictions 0 or 1)
+\end{enumerate}
+
+\subsubsection{Weighting}
+
+\section{References}
+
+\begin{itemize}
+  \item See Reliable decision support using conterfactual models \cite{schulam2017reliable}
+\end{itemize}
+
+\section{Unstable paths}
+
+Learning $T | C, Y$ is unstable because $C$ still depends on an unknown
+variable $D$.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}
+   \node[main node] (d) {$D$};
+   \node[main node] (t) [below left = 0.6cm and 0.5cm of d]  {$T$};
+   \node[main node] (c) [below right = 0.6cm and 0.5cm of d] {$C$};
+   \node[main node] (y) [below left = 0.6cm and 0.5cm of c] {$Y$};
+
+   \path[->,thick]
+   (d) edge node {} (t)
+   (d) edge node {} (c)
+   (t) edge node {} (y)
+   (c) edge node {} (y);
+  \end{tikzpicture}
+  \caption{Causality graph}
+\end{figure}
+
+Consider naive discriminative model $P(T|C,Y)$, in this case $C$ is
+{\color{red}vulnerable} because it has an active unstable path to $T$.
+
+\begin{figure}[h]
+  \centering
+    \begin{tikzpicture}
+     \node[unobserved node] (d) {$D$};
+     \node[unobserved node] (t) [below left = 0.6cm and 0.5cm of d]  {$T$};
+     \node[observed node] (c) [below right = 0.6cm and 0.5cm of d] {$C$};
+     \node[observed node] (y) [below left = 0.6cm and 0.5cm of c] {$Y$};
+
+     \path[->,thick]
+     (d) edge node {} (t)
+     (t) edge node {} (y)
+     (c) edge node {} (y);
+     \path[->,thick, color=red]
+     (d) edge node {} (c);
+  \end{tikzpicture}
+  \caption{Vulnerable variables}
+\end{figure}
+
+We can create a new feature tha \dots
+
+\begin{figure}[h]
+  \centering
+    \begin{tikzpicture}
+     \node[unobserved node] (d) {$D$};
+     \node[unobserved node] (t) [below left = 0.6cm and 0.5cm of d]  {$T$};
+     \node[observed node] (c) [below right = 0.6cm and 0.5cm of d] {$C$};
+     \node[unobserved node] (yc) [below = 0.6cm of t]  {$Y(C)$};
+     \node[observed node] (y) [below right = 0.6cm and 0.5cm of yc] {$Y$};
+
+     \path[->,thick]
+     (d) edge node {} (t)
+     (t) edge node {} (yc)
+     (yc) edge node {} (y)
+     (c) edge node {} (y);
+     \path[->,thick, color=red]
+     (d) edge node {} (c);
+  \end{tikzpicture}
+  \caption{Vulnerable variables}
+\end{figure}
 
 \end{document}
