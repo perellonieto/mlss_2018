@@ -1,0 +1,1333 @@
+%% = = = =  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%% ACRONYMS
+%% = = = =  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+%%%%% define the acronym and use the %%see= option
+%%\newglossaryentry{EEE}{
+%%  type=\acronymtype,
+%%  name={EEE\glsadd{EEEg}},
+%%  description={Expanded},
+%%  descriptionplural={\glsentrydesc{EEE}s},
+%%  first={\glsentrydesc{EEE} (EEE)\glsadd{EEEg}},
+%%  firstplural={\glsentrydescplural{EEE} (\glsentryplural{EEE})\glsadd{EEEg}},
+%%  %%see=[Glossary:]{EEEg}
+%%}
+%%
+%%\newglossaryentry{EEEg}{
+%%  name={EEE},
+%%  description={TODO: description}
+%%}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{GNN}{
+  type=\acronymtype,
+  name={GNN\glsadd{GNNg}},
+  description={Graph Neural Network},
+  descriptionplural={\glsentrydesc{GNN}s},
+  first={\glsentrydesc{GNN} (GNN)\glsadd{GNNg}},
+  firstplural={\glsentrydescplural{GNN} (\glsentryplural{GNN})\glsadd{GNNg}},
+  %%see=[Glossary:]{SOMg}
+}
+
+\newglossaryentry{GNNg}{
+  name={GNN},
+  description={TODO: description}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SOM}{
+  type=\acronymtype,
+  name={SOM\glsadd{SOMg}},
+  description={Self-Organizing Map},
+  descriptionplural={\glsentrydesc{SOM}s},
+  first={\glsentrydesc{SOM} (SOM)\glsadd{SOMg}},
+  firstplural={\glsentrydescplural{SOM} (\glsentryplural{SOM})\glsadd{SOMg}},
+  %%see=[Glossary:]{SOMg}
+}
+
+\newglossaryentry{SOMg}{
+  name={SOM},
+  description={\glsfirstplural{SOM}  are a type of \glsplural{ANN} trained using
+  unsupervised learning to embed a complex feature representation in a reduced
+  dimensionallity space (commonly two dimensions). The embedding is achieved by
+  using a competitive learning algorithm that computes a neighbourhood function
+  between the samples and the different neurons, increasing the connectivity to
+  the winning neuron and its neigbours and decreasing it to the rest. They are
+  also known as Kohonen maps as the Finnish professor Teuvo Kohonen designed
+them in the 1980s}
+}
+
+\newglossaryentry{HM}{
+  type=\acronymtype,
+  name={HM\glsadd{HMg}},
+  description={Helmholtz Machine},
+  descriptionplural={\glsentrydesc{HM}s},
+  first={\glsentrydesc{HM} (HM)\glsadd{HMg}},
+  firstplural={\glsentrydescplural{HM} (\glsentryplural{HM})\glsadd{HMg}},
+  %see=[Glossary:]{HMg}
+}
+
+\newglossaryentry{HMg}{
+  name={HM},
+  description={The \glsfirst{HM} is a type of \glsfirst{ANN} with a recognition
+  and a generative model that share the hidden variables but not the weight
+  connections. It can be trained with the ``wake-sleep'' algorithm, an
+  unsupervised method to train the recognition and the generative model
+  simultaniously.}
+}
+
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{Infomax}{
+  type=\acronymtype,
+  name={Infomax\glsadd{Infomaxg}},
+  description={maximum mutual information},
+  first={maximum mutual information (Infomax)\glsadd{Infomaxg}},
+  %see=[Glossary:]{Infomaxg}
+}
+
+\newglossaryentry{Infomaxg}{
+  name={Infomax},
+  description={The \glsfirst{Infomax} is an optimization principle that tries to
+minimize the amount of information needed to codify a match between a set of
+inputs and outputs. This principle has been studied in some biological systems
+and has been applied on information retrieval and  machine learning algorithms}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ANN}{
+  type=\acronymtype,
+  name={ANN\glsadd{ANNg}},
+  description={Artificial Neural Network},
+  descriptionplural={\glsentrydesc{ANN}s},
+  first={\glsentrydesc{ANN} (ANN)\glsadd{ANNg}},
+  firstplural={\glsentrydescplural{ANN} (\glsentryplural{ANN})\glsadd{ANNg}},
+  %see=[Glossary:]{ANNg}
+}
+\newglossaryentry{ANNg}{
+  name={ANN},
+  description={An Artificial Neural Network (ANN) is a mathematical representation of a biological neural network
+  that simplifies its architecture and physical behaviour. It is used in
+  Machine Learning to solve regression and decision problems}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{MLP}{
+  type=\acronymtype,
+  name={MLP\glsadd{mlpg}},
+  description={Multilayer Perceptron},
+  first={Multilayer Perceptron (MLP)\glsadd{mlpg}},
+  %see=[Glossary:]{mlpg}
+}
+
+\newglossaryentry{mlpg}{
+  name={MLP},
+  description={A \glsfirst{MLP} is the most common name of a \glsfirst{MFNN}.
+  See \gls{MFNN} for the description}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{CNN}{
+  type=\acronymtype,
+  name={CNN\glsadd{CNNg}},
+  description={Convolutional Neural Network},
+  descriptionplural={\glsentrydesc{CNN}s},
+  first={\glsentrydesc{CNN} (CNN)\glsadd{CNNg}},
+  firstplural={\glsentrydescplural{CNN} (\glsentryplural{CNN})\glsadd{CNNg}},
+  %see=[Glossary:]{CNNg}
+}
+\newglossaryentry{CNNg}{
+  name={CNN},
+  description={A Convolutional Neural Network (CNN) is a particular case of an
+    \gls{ANN} with some strong priors about the input signals. They exploits the
+    assumption that there exist an important spatial or temporal connection
+    between neighbor inputs. With this assumption it is possible to restrict the
+    number of connections simulating a large amount of zero weights that are not
+    actually represented in the network. For a larger explanation and a better
+    understanding refer to the Chapter. \ref{cha:cnn}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SVM}{
+  type=\acronymtype,
+  name={SVM\glsadd{svmg}},
+  description={Support Vector Machine},
+  first={Support Vector Machine (SVM)\glsadd{svmg}},
+  %see=[Glossary:]{svmg}
+}
+
+\newglossaryentry{svmg}{
+  name={SVM},
+  description={A \glsfirst{SVM} is a type of supervised binary classification
+model. It is designed to find a hyperplane (or a set of hyperplanes) that
+separates with the largest margin all the binary training samples. If there is
+no such hyperplane it accepts a cost to find a soft margin solution. The most
+basic model is the linear \gls{SVM} while the kernelized method is
+non-parametric and finds support vectors on the training samples. The support
+vectors are training samples that are used to support the hyperplane}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{DoG}{
+  type=\acronymtype,
+  name={DoG\glsadd{dogg}},
+  description={Difference of Gaussian},
+  first={Difference of Gaussian (DoG)\glsadd{dogg}},
+  %see=[Glossary:]{dogg}
+}
+
+\newglossaryentry{dogg}{
+  name={DoG},
+  description={The difference of Gaussians (DoG) detector is an edge detector
+  that uses as a kernel the shape of a Gaussian substracting another one with
+  a different variance}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{LoG}{
+  type=\acronymtype,
+  name={LoG\glsadd{logg}},
+  description={Laplacian of Gaussian},
+  first={Laplacian of Gaussian (LoG)\glsadd{logg}},
+  %see=[Glossary:]{logg}
+}
+
+\newglossaryentry{logg}{
+  name={LoG},
+  %% TODO:
+  description={The \glsfirst{LoG} is a blob detector based on the Laplacian of a
+Gaussian}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SURF}{
+  type=\acronymtype,
+  name={SURF\glsadd{SURFg}},
+  description={Speeded-Up Robust Features},
+  first={Speeded-Up Robust Features (SURF)\glsadd{SURFg}},
+  %see=[Glossary:]{SURFg}
+}
+
+\newglossaryentry{SURFg}{
+  name={SURF},
+  %% TODO:
+  description={The \glsfirst{SURF} is an image descriptor similar to
+  \glsfirst{SIFT} but modified for a faster computation}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SIFT}{
+  type=\acronymtype,
+  name={SIFT\glsadd{SIFTg}},
+  description={Scale-Invariant Feature Transform},
+  first={Scale-Invariant Feature Transform (SIFT)\glsadd{SIFTg}},
+  %see=[Glossary:]{SIFTg}
+}
+
+\newglossaryentry{SIFTg}{
+  name={SIFT},
+  %% TODO:
+  description={\glsfirst{SIFT} is an algorithm to extract a set of important
+  points from an image invariant to scale and translation. See the Section
+  \ref{sec:clas:feat:sift} for an extended description}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{YUV}{
+  type=\acronymtype,
+  name={YUV\glsadd{yuvg}},
+  description={Stands for luminance (Y) and chrominance (UV)},
+  first={YUV\glsadd{yuvg}},
+  %see=[Glossary:]{yuvg}
+}
+
+\newglossaryentry{yuvg}{
+  name={YUV},
+  description={The YUV is a color space that encodes the luminance in the Y
+  channel while the chrominance is encoded in the orthogonal channels U and V.
+It is used in the analog encoding PAL (used in Australia, Europe, except France,
+some parts of Africa, India, Brazil, Argentina, and others)}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{RGB}{
+  type=\acronymtype,
+  name={RGB},
+  description={Red Green and Blue},
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ICA}{
+  type=\acronymtype,
+  name={ICA\glsadd{icag}},
+  description={Independent Component Analysis},
+  first={Independent Component Analysis (ICA)\glsadd{icag}},
+  %see=[Glossary:]{icag}
+}
+
+\newglossaryentry{icag}{
+  name={ICA},
+  description={The \glsfirst{ICA} is a technique used in signal processing to
+find additive subsignals that are non-Gaussian and statistically independent}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{RBF}{
+  type=\acronymtype,
+  name={RBF\glsadd{RBFg}},
+  description={Radial Basis Function},
+  first={Radial Basis Function (RBF)\glsadd{RBFg}},
+  %see=[Glossary:]{RBFg}
+}
+
+\newglossaryentry{RBFg}{
+  name={RBF},
+  description={A \glsfirst{RBF} is a type of function that computes the distance
+to a specific center. One common type is the Gaussian function}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{VC dimension}{
+  type=\acronymtype,
+  name={VC dimension\glsadd{VC dimensiong}},
+  description={Vapnik-Chervonenkis dimension},
+  first={Vapnik-Chervonenkis dimension (VC dimension)\glsadd{VC dimensiong}},
+  %see=[Glossary:]{VC dimensiong}
+}
+
+\newglossaryentry{VC dimensiong}{
+  name={VC dimension},
+  description={The \glsfirst{VC dimension} is a measure of the capacity of a
+classification model to separate correctly a set of points in an N-dimensional
+space. For example, in a two dimensional space a linear classifier can classify
+up to three points in any spatial configuration, but not four}
+}
+
+\newglossaryentry{BM}{
+  type=\acronymtype,
+  name={BM\glsadd{BMg}},
+  description={Boltzmann Machine},
+  descriptionplural={\glsentrydesc{BM}s},
+  first={\glsentrydesc{BM} (BM)\glsadd{BMg}},
+  firstplural={\glsentrydescplural{BM} (\glsentryplural{BM})\glsadd{BMg}},
+  %see=[Glossary:]{BMg}
+}
+
+\newglossaryentry{BMg}{
+  name={BM},
+  description={A \glsfirst{BM} is a generative stochastic model with undirected
+  connections. It is the stochastic version of the \gls{Hopfield network}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{RBM}{
+  type=\acronymtype,
+  name={RBM\glsadd{RBMg}},
+  description={Restricted Boltzmann Machine},
+  descriptionplural={\glsentrydesc{RBM}s},
+  first={\glsentrydesc{RBM} (RBM)\glsadd{RBMg}},
+  firstplural={\glsentrydescplural{RBM} (\glsentryplural{RBM})\glsadd{RBMg}},
+  %see=[Glossary:]{RBMg}
+}
+
+\newglossaryentry{RBMg}{
+  name={RBM},
+  description={A \glsfirst{RBM} is a generative stochastic model with undirected
+connections between two layers, and without connections between units of the
+same layer}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{BN}{
+  type=\acronymtype,
+  name={BN\glsadd{BNg}},
+  description={Belief Network},
+  descriptionplural={\glsentrydesc{BN}s},
+  first={\glsentrydesc{BN} (BN)\glsadd{BNg}},
+  firstplural={\glsentrydescplural{BN} (\glsentryplural{BN})\glsadd{BNg}},
+  %see=[Glossary:]{BNg}
+}
+
+\newglossaryentry{BNg}{
+  name={BN},
+  description={A \glsfirst{BN} (also known as Bayesian network or Bayes network)
+is a probabilistic graphical model with acyclic and directed dependencies
+between a set of random variables}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{DBN}{
+  type=\acronymtype,
+  name={DBN\glsadd{DBNg}},
+  description={Deep Belief Network},
+  first={Deep Belief Network (DBN)\glsadd{DBNg}},
+  %see=[Glossary:]{DBNg}
+}
+
+\newglossaryentry{DBNg}{
+  name={DBN},
+  description={A \glsfirst{DBN} is a \glsfirst{BN} with multiple layers of
+  lattent variables. See definition of \gls{BN}}
+}
+
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{FNN}{
+  type=\acronymtype,
+  name={FNN\glsadd{FNNg}},
+  description={Feed-forward neural network},
+  first={Feed-forward neural network (FNN)\glsadd{FNNg}},
+  %see=[Glossary:]{FNNg}
+}
+
+\newglossaryentry{FNNg}{
+  name={FNN},
+  description={A \glsfirst{FNN} is a type of \glsfirst{ANN} with directed and
+acyclic connections}
+}
+
+\newglossaryentry{MFNN}{
+  type=\acronymtype,
+  name={MFNN\glsadd{mfnng}},
+  description={Multilayer Feedforward Neural Network},
+  first={Multilayer Feedforward Neural Network (MFNN)\glsadd{mfnng}},
+  %%see=[Glossary:]{mfnng}
+}
+
+\newglossaryentry{mfnng}{
+  name={MFNN},
+  description={A \glsfirst{MFNN} is a particular type of a
+    \gls{FNN} with at least one layer of hidden \glspl{unit}}
+}
+
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{TPE}{
+  type=\acronymtype,
+  name={TPE\glsadd{TPEg}},
+  description={Temporal Propositional Expression},
+  first={Temporal Propositional Expression (TPE)\glsadd{TPEg}},
+  %see=[Glossary:]{TPEg}
+}
+
+\newglossaryentry{TPEg}{
+  name={TPE},
+  description={The \glsfirst{TPE} was a type of logic created in the 40s by
+McCulloch and Pitts to define the set of problems that were able to solve with
+artificial neurons activated on time steps}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{AI}{
+  type=\acronymtype,
+  name={AI\glsadd{AIg}},
+  description={Artificial Intelligence},
+  first={Artificial Intelligence (AI)\glsadd{AIg}},
+  %see=[Glossary:]{AIg}
+}
+
+\newglossaryentry{AIg}{
+  name={AI},
+  description={\glsfirst{AI} is a field of study that tries to create machines
+that are able to automatically solve particular problems. In most of the cases,
+finding the optimal solution is intractable and these algorithms try to find
+local optimums or good approximations}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ENIAC}{
+  type=\acronymtype,
+  name={ENIAC\glsadd{ENIACg}},
+  description={Electronic Numerical Integrator And Computer},
+  first={ENIAC (Electronic Numerical Integrator And Computer)\glsadd{ENIACg}},
+  %see=[Glossary:]{ENIACg}
+}
+
+\newglossaryentry{ENIACg}{
+  name={ENIAC},
+  description={The \glsfirst{ENIAC} was one of the first computers, constructed
+in 1946}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{EDVAC}{
+  type=\acronymtype,
+  name={EDVAC\glsadd{EDVACg}},
+  description={Electronic Discrete Variable Automatic Computer},
+  first={EDVAC (Electronic Discrete Variable Automatic Computer)\glsadd{EDVACg}},
+  %see=[Glossary:]{EDVACg}
+}
+
+\newglossaryentry{EDVACg}{
+  name={EDVAC},
+  description={The \glsfirst{EDVAC} was one of the first computers constructed
+  in 1949. It was a predecesor of the \gls{ENIAC} binary rather than decimal and
+larger computational capabilities}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SNARC}{
+  type=\acronymtype,
+  name={SNARC\glsadd{SNARCg}},
+  description={Stochastic Neural Analog Reinforcement Calculator},
+  first={SNARC (Stochastic Neural Analog Reinforcement Calculator) \glsadd{SNARCg}},
+  %see=[Glossary:]{SNARCg}
+}
+
+\newglossaryentry{SNARCg}{
+  name={SNARC},
+  description={The \glsfirst{SNARC} was one of the first hardware
+  implementations of an \glsfirst{ANN}, developed by Marvin Lee Minsky in the
+50s. It was a set of bacum tubes with random connections, and able to learn
+automatically}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{Adaline}{
+  type=\acronymtype,
+  name={Adaline\glsadd{Adalineg}},
+  description={Adaptive Linear Neuron or Adaptive Linear Element},
+  first={Adaline (Adaptive Linear Neuron or Adaptive Linear Element)\glsadd{Adalineg}},
+  %see=[Glossary:]{Adalineg}
+}
+
+\newglossaryentry{Adalineg}{
+  name={Adaline},
+  description={The \glsfirst{Adaline} was one of the first implementations of an
+  \glsfirst{ANN} inspired by the work of McCulloch and Pitts. The same name was
+  given to the physical device that simulated the network. It was designed to
+  perform a summation of various inputs and bias, all of them scaled by a set of
+  weights. In the physical device these weights were implemented using
+  \glspl{memistor}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{CIE}{
+  type=\acronymtype,
+  name={CIE\glsadd{CIEg}},
+  description={Commission Internationale de l'Clairage},
+  first={CIE (Commission Internationale de l'Clairage)\glsadd{CIEg}},
+  %see=[Glossary:]{CIEg}
+}
+
+\newglossaryentry{CIEg}{
+  name={CIE},
+  description={Is the International Commission on Illumination (from French
+  Commission Internationale de l'Clairage) and the international authority on
+light, illumination colour, and colour spaces}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{GPU}{
+  type=\acronymtype,
+  name={GPU\glsadd{GPUg}},
+  description={Graphics Processing Unit},
+  first={Graphics Processing Unit (GPU)\glsadd{GPUg}},
+  %see=[Glossary:]{GPUg}
+}
+
+\newglossaryentry{GPUg}{
+  name={GPU},
+  description={A \glsfirst{GPU} is a dedicated electronic circuit focused on the
+  visualization of images on a screen. It is designed for fast computations and
+  modern \glspl{GPU} are able operate with matrices in a very efficient manner.
+For that reason, they are being used for long scientific computations}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ESN}{
+  type=\acronymtype,
+  name={ESN\glsadd{ESNg}},
+  description={Echo State Network},
+  first={Echo State Network (ESN)\glsadd{ESNg}},
+  firstplural={\glsentrydescplural{ESN} (\glsentryplural{ESN})\glsadd{ESNg}},
+  %see=[Glossary:]{ESNg}
+}
+
+\newglossaryentry{ESNg}{
+  name={ESN},
+  description={An \glsfirst{ESN} is an \glsfirst{RNN} in which its connections
+  are randomly choosen. The internal connections of the network are keept fixed
+  during the training while the output connections are updated with a learning
+  algorithm. This networks are eassy to train as the output weights are linear
+after the nonlinear parameter space, this makes the error surface quadratic and
+makes it solvable numerically}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ReLU}{
+  type=\acronymtype,
+  name={ReLU\glsadd{ReLUg}},
+  description={rectified linear unit},
+  first={rectified linear unit (ReLU)\glsadd{ReLUg}},
+  %see=[Glossary:]{ReLUg}
+}
+
+\newglossaryentry{ReLUg}{
+  name={ReLU},
+  description={The \glsfirst{ReLU} is a function used in \glsfirst{ANN} as an
+  activation function. It is equal to zero in the negative side of the function
+  and grows linearly in the positive side. The use of this activation function
+  was an important part to classify images using \glsfirstplural{CNN}}
+}
+
+\newglossaryentry{PReLU}{
+  type=\acronymtype,
+  name={PReLU\glsadd{PReLUg}},
+  description={Parametric Rectified Linear Unit},
+  first={Parametric Rectified Linear Unit (PReLU)\glsadd{PReLUg}},
+  %see=[Glossary:]{PReLUg}
+}
+
+\newglossaryentry{PReLUg}{
+  name={PReLU},
+  description={The \glsfirst{PReLU} is a function used in \glsfirst{ANN} as an
+  activation function. It is based on \gls{ReLU}. However, it is negative or
+  equal to zero in the negative side of the function, with a slope determined by
+  a parameter; and grows linearly in the positive side with a different slope
+  (commonly more pronounced)}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{YIQ}{
+  type=\acronymtype,
+  name={YIQ\glsadd{YIQg}},
+  description={Y (luminance) IQ (chrominance)},
+  first={YIQ\glsadd{YIQg}},
+  %see=[Glossary:]{YIQg}
+}
+
+\newglossaryentry{YIQg}{
+  name={YIQ},
+  description={The YIQ is a color space that encodes the luminance in the Y
+    channel while the chrominance is encoded in the orthogonal channels I and Q.
+    It is used in the analog encoding NTSC (North America, Japan, some parts of
+    Africa, South Korea, Taiwan, and others)}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{HSL}{
+  type=\acronymtype,
+  name={HSL\glsadd{HSLg}},
+  description={Hue-Saturation-Lightness},
+  first={HSL\glsadd{HSLg}},
+  %see=[Glossary:]{HSLg}
+}
+
+\newglossaryentry{HSLg}{
+  name={HSL},
+  description={The \glsfirst{HSL} color space is a typical representation of
+colors in a cylindrical coordinate system. In this representation the lightness
+is codified in the height of the cylinder, the hue in the rotation of the
+rotation, and the saturation with the distance from the center axis}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{HSV}{
+  type=\acronymtype,
+  name={HSV\glsadd{HSVg}},
+  description={Hue-Saturation-Value},
+  first={HSV\glsadd{HSVg}},
+  %see=[Glossary:]{HSVg}
+}
+
+\newglossaryentry{HSVg}{
+  name={HSV},
+  description={The \glsfirst{HSV} color space similar to \gls{HSL}, however, the
+  lighting is represented with the variable value and is distributed in a
+  different manner. While in the \gls{HSL} the white is equaly distributed on
+  the top surface of the cylinder, in the \gls{HSV} the white is in the exact
+  center of the top surface}
+}
+
+\newglossaryentry{ELM}{
+  type=\acronymtype,
+  name={ELM\glsadd{ELMg}},
+  description={Extreme Learning Machine},
+  first={Extreme Learning Machine (ELM)\glsadd{ELMg}},
+  %see=[Glossary:]{ELMg}
+}
+
+\newglossaryentry{ELMg}{
+  name={ELM},
+  description={An Extreme Learning Machine (ELM) is a particular case of an
+    \gls{ANN} with at least one layer of hidden \glspl{unit}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{RNN}{
+  type=\acronymtype,
+  name={RNN\glsadd{RNNg}},
+  description={Recurrent Neural Network},
+  first={Recurrent Neural Network (RNN)\glsadd{RNNg}},
+  %see=[Glossary:]{RNNg}
+}
+
+\newglossaryentry{RNNg}{
+  name={RNN},
+  description={A \glsfirst{RNN} is a type of \glsfirst{ANN} with loop
+connections between some of the units (usually between the hidden units). The
+activations between the loops are propagated in discrete steps on time. These
+networks have been used succesfully for time series predictions}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{SGD}{
+  type=\acronymtype,
+  name={SGD\glsadd{SGDg}},
+  description={Stochastic Gradient Descent},
+  first={Stochastic Gradient Descent (SGD)\glsadd{SGDg}},
+  %see=[Glossary:]{SGDg}
+}
+
+\newglossaryentry{SGDg}{
+  name={SGD},
+  description={The \glsfirst{SGD} is an optimization method for minimizing the
+  error of an objective function. It is based on minimizing the error in
+  individual samples and estimates that the total error also decreases. One
+  requisite to apply this technique is that the objective function has be
+differentiable}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{HOG}{
+  type=\acronymtype,
+  name={HOG\glsadd{HOGg}},
+  description={Histogram of Oriented Gradients},
+  first={Histogram of Oriented Gradients (HOG)\glsadd{HOGg}},
+  %see=[Glossary:]{HOGg}
+}
+
+\newglossaryentry{HOGg}{
+  name={HOG},
+  description={The \glsfirst{HOG} is an image descriptor inspired by \gls{SIFT},
+however, it extensively computes orientation gradients through all the image}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{BoV}{
+  type=\acronymtype,
+  name={BoV\glsadd{BoVg}},
+  description={Bag of Visual words},
+  first={Bag of Visual words (BoV)\glsadd{BoVg}},
+  %see=[Glossary:]{BoVg}
+}
+
+\newglossaryentry{BoVg}{
+  name={BoV},
+  description={\glsfirst{BoV} is a technique used in computer to represent and
+  image in a simplified manner. Based on the \gls{BoW}, it describes the image
+with the number of occurences of certain visual features, without storing their
+position}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{BoW}{
+  type=\acronymtype,
+  name={BoW\glsadd{BoWg}},
+  description={Bag of Words},
+  first={Bag of Words (BoW)\glsadd{BoWg}},
+}
+
+\newglossaryentry{BoWg}{
+  name={BoW},
+  description={\glsfirst{BoW} is a technique used in natural language
+  processing and information retrieval to represent a text in a simplified
+  manner. It consists on representing the text as a set of words with the number
+  of occurences, without order}
+}
+
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{LRN}{
+  type=\acronymtype,
+  name={LRN\glsadd{LRNg}},
+  description={Local Response Normalization},
+  first={Local Response Normalization (LRN)\glsadd{LRNg}},
+  %see=[Glossary:]{LRNg}
+}
+
+\newglossaryentry{LRNg}{
+  name={LRN},
+  description={The \glsfirst{LRN} is a technique used in \glspl{CNN} to
+normalize the local activity of neighbour neurons}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{GLOH}{
+  type=\acronymtype,
+  name={GLOH\glsadd{GLOHg}},
+  description={Gradient location-orientation histogram},
+  first={Gradient location-orientation histogram (GLOH)\glsadd{GLOHg}},
+  %see=[Glossary:]{GLOHg}
+}
+
+\newglossaryentry{GLOHg}{
+  name={GLOH},
+  description={The \glsfirst{GLOH} is an image descriptor used in computer
+  vison. This technique is similar to SIFT but the created histogram contains
+  more spatial bins and it is finally reduced with \gls{PCA}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{PCA-SIFT}{
+  type=\acronymtype,
+  name={PCA-SIFT\glsadd{PCA-SIFTg}},
+  description={PCA-Scale-Invariant Feature Transform},
+  first={PCA-Scale-Invariant Feature Transform (PCA-SIFT)\glsadd{PCA-SIFTg}},
+  %see=[Glossary:]{PCA-SIFTg}
+}
+
+\newglossaryentry{PCA-SIFTg}{
+  name={PCA-SIFT},
+  description={The \glsfirst{PCA-SIFT} is an image representation based on
+  \gls{SIFT} that initially finds a larger feature representation and then
+  applies \gls{PCA} to reduce its dimensionality}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{PCA}{
+  type=\acronymtype,
+  name={PCA\glsadd{PCAg}},
+  description={Principal Component Analysis},
+  first={Principal Component Analysis (PCA)\glsadd{PCAg}},
+  %see=[Glossary:]{PCAg}
+}
+
+\newglossaryentry{PCAg}{
+  name={PCA},
+  description={The \glsfirst{PCA} is a statistical technique to transform a set
+of sample points in an N-dimensional space into a new space where the new
+dimensions are orthogonal and sorted by variability}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{HoPS}{
+  type=\acronymtype,
+  name={HoPS\glsadd{HoPSg}},
+  description={Histogram of Pattern Sets},
+  first={Histogram of Pattern Sets (HoPS)\glsadd{HoPSg}},
+  %see=[Glossary:]{HoPSg}
+}
+
+\newglossaryentry{HoPSg}{
+  name={HoPS},
+  description={The \glsfirst{HoPS} is an image descriptor that randomly selects
+  a set of other descriptors and reducing the total size. The random sets are
+  called transactions and are designed to maximize the separability of the
+  descriptors on different classes while reduces the intra-class distances}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{XYZ}{
+  type=\acronymtype,
+  name={XYZ\glsadd{XYZg}},
+  description={proportions of the RGB color space},
+  first={Expanded (XYZ)\glsadd{XYZg}},
+  %see=[Glossary:]{XYZg}
+}
+
+\newglossaryentry{XYZg}{
+  name={XYZ},
+  description={The XYZ is color space derived from the \gls{RGB} color space but
+adapted to compensate the negative values perceived by the human visual system}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{YCbCr}{
+  type=\acronymtype,
+  name={YCbCr\glsadd{YCbCrg}},
+  description={Y (luminance), Cb (blue difference), Cr (red difference)},
+  first={YCbCr\glsadd{YCbCrg}},
+  %see=[Glossary:]{YCbCrg}
+}
+
+\newglossaryentry{YCbCrg}{
+  name={YCbCr},
+  description={The YCbCr is a color space used in digital images and video that
+  encodes the luminance in the ``Y'' channel and the chrominance in the Cb
+  (blue difference) and Cr (red difference). The \gls{YUV} color space is the
+  same space but for analog encoding}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{DARPA}{
+  type=\acronymtype,
+  name={DARPA},
+  description={Defense Advanced Research Projects Agency},
+  first={Defense Advanced Research Projects Agency (DARPA)},
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{LGN}{
+  type=\acronymtype,
+  name={LGN\glsadd{LGNg}},
+  description={Lateral Geniculate Nucleus},
+  descriptionplural={Lateral Geniculate Nuclei},
+  first={Lateral Geniculate Nucleus (LGN)\glsadd{LGNg}},
+  firstplural={\glsentrydescplural{LGN} (\glsentryplural{LGN})\glsadd{LGNg}},
+  %see=[Glossary:]{LGNg}
+}
+
+\newglossaryentry{LGNg}{
+  name={LGN},
+  description={The \glsfirst{LGN} is a section of the thalamus focused on the
+visual system. It receives the axons of ganglion cells from the retina through
+the optic nerve and optic chiasma and propagates their signals to the primary
+visual cortex}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{P-cells}{
+  type=\acronymtype,
+  name={P-cells\glsadd{P-cellsg}},
+  description={Parvocellular cells},
+  first={Parvocellular cells (P-cells)\glsadd{P-cellsg}},
+  %see=[Glossary:]{P-cellsg}
+}
+
+\newglossaryentry{P-cellsg}{
+  name={P-cells},
+  description={The \glsfirst{P-cells} are a type of ganglion cells with their
+  body in the retina of the eyes and with axons that extends to the \gls{LGN}
+  and the primary visual cortex. In the \gls{LGN} they are distributed in the
+  last four layers (from the 3th to the 6th)}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{M-cells}{
+  type=\acronymtype,
+  name={M-cells\glsadd{M-cellsg}},
+  description={Magnocellular cells},
+  first={Magnocellular cells (M-cells)\glsadd{M-cellsg}},
+  %see=[Glossary:]{M-cellsg}
+}
+
+\newglossaryentry{M-cellsg}{
+  name={M-cells},
+  description={The \glsfirst{M-cells} are a type of ganglion cells with their
+  body in the retina of the eyes and with axons that extends to the \gls{LGN}
+  and the primary visual cortex. In the \gls{LGN} they are distributed in the first
+and second layers}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{K-cells}{
+  type=\acronymtype,
+  name={K-cells\glsadd{K-cellsg}},
+  description={Koniocellular cells},
+  first={Koniocellular cells (K-cells)\glsadd{K-cellsg}},
+  %see=[Glossary:]{K-cellsg}
+}
+
+\newglossaryentry{K-cellsg}{
+  name={K-cells},
+  description={The \glsfirst{K-cells} are a type of ganglion cells with their
+  body in the retina of the eyes and with axons that extends to the \gls{LGN}
+  and the primary visual cortex. In the \gls{LGN} they are situated in the
+  strates between \gls{P-cells} and \gls{M-cells}}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{ILSVRC}{
+  type=\acronymtype,
+  name={ILSVRC},
+  description={ImageNet Large Scale Visual Recognition Challenge},
+  first={ImageNet Large Scale Visual Recognition Challenge (ILSVRC)},
+  %see=[Glossary:]{ILSVRCg}
+}
+
+%%% define the acronym and use the %%see= option
+\newglossaryentry{BPTT}{
+  type=\acronymtype,
+  name={BPTT\glsadd{BPTTg}},
+  description={backpropagation through time},
+  first={backpropagation through time (BPTT)\glsadd{BPTTg}},
+  %see=[Glossary:]{BPTTg}
+}
+
+\newglossaryentry{BPTTg}{
+  name={BPTT},
+  description={\glsfirst{BPTT} is a technique to train \glsfirstplural{RNN} by
+  unfolding the network in time and applying the normal \gls{backpropagation}}
+}
+
+%%%%% define the acronym and use the %%see= option
+%%\newglossaryentry{EEE}{
+%%  type=\acronymtype,
+%%  name={EEE\glsadd{EEEg}},
+%%  description={Expanded},
+%%  descriptionplural={\glsentrydesc{EEE}s},
+%%  first={\glsentrydesc{EEE} (EEE)\glsadd{EEEg}},
+%%  firstplural={\glsentrydescplural{EEE} (\glsentryplural{EEE})\glsadd{EEEg}},
+%%  %%see=[Glossary:]{EEEg}
+%%}
+%%
+%%\newglossaryentry{EEEg}{
+%%  name={EEE},
+%%  description={TODO: description}
+%%}
+
+%% = = = =  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+%% GLOSSARY
+%% = = = =  = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = = =
+
+\newglossaryentry{inverse problem}{
+  name={inverse problem},
+  %% TODO:
+  description={It is a class of problems where the objective is to model a
+    physical system given a set of measurements}
+}
+\newglossaryentry{auto-correlation function}
+{
+  name=auto-correlation function,
+  description={Auto-correlation is a linear dependence of one variable with
+  itself in different sliding time (or space). In case of an image patch and the
+complete image, it is a surface that indicates how stable is the given patch},
+}
+
+\newglossaryentry{linear regression}
+{
+  name=linear regression,
+  description={Mathematical modeling technique to approximate a serie
+  points in an euclidean space using a linear function},
+}
+
+\newglossaryentry{unit}{
+  name={unit},
+  description={In the context of \glsfirst{ANN}, one unit corresponds to one
+node of the network, it is also refered as an artificial neuron}
+}
+
+\newglossaryentry{artificial neuron}{
+  name={artificial neuron},
+  description={In the context of \gls{ANN}, one artificial neuron corresponds to
+one node of the network, it is also refered as a unit}
+}
+
+\newglossaryentry{hidden layer}{
+  name={hidden layer},
+  description={One hidden layer is one of the layers of a \gls{ANN} different
+  than the \gls{input layer} or the \gls{output layer}}
+}
+
+\newglossaryentry{input layer}{
+  name={input layer},
+  description={The input layer on an \gls{ANN} is the first layer with one
+  \gls{unit} for each of the input variables}
+}
+
+\newglossaryentry{output layer}{
+  name={output layer},
+  description={The input layer on an \gls{ANN} is the last layer with one
+  \gls{unit} for each of the variables to predict. In case of a classification
+  problem it can contain one \gls{unit} per each class}
+}
+
+\newglossaryentry{aperture problem}{
+  name={aperture problem},
+  description={In visual feature matching tasks, if the patch that is being
+  analyzed contains only a straight line, it could be matched to multiple
+regions of a larger line. This problem makes impossible to choose wich is the
+real position}
+}
+
+\newglossaryentry{Connectionism}{
+  name={Connectionism},
+  %% TODO:
+  description={``Connectionism is a movement in cognitive science which hopes to
+  explain human intellectual abilities using artificial neural networks (also
+  known as `neural networks' or `neural nets'). Neural networks are simplified
+  models of the brain composed of large numbers of units (the analogs of neurons)
+  together with weights that measure the strength of connections between the
+  units. These weights model the effects of the synapses that link one neuron to
+  another. Experiments on models of this kind have demonstrated an ability to
+  learn such skills as face recognition, reading, and the detection of simple
+  grammatical structure'' (definition by James Garson from the Standford
+Encyclopedia of Philosophy)}
+}
+
+\newglossaryentry{Neocognitron}{
+  name={Neocognitron},
+  description={The Neocognitron is a type of \glsfirst{ANN} with hierarchical
+connections and multiple layers designed to solve pattern recognition problems.
+It was designed by Fukushima, and inspired by the work of Hubel and Wiesel on
+the primary visual cortex in the 50s}
+}
+
+\newglossaryentry{luminance}{
+  name={luminance},
+  description={It is the level of brightness (or light) of an image. By using
+    only the luminance information of an image, only a grayscale from black to
+    white can be represented}
+}
+
+\newglossaryentry{chrominance}{
+  name={chrominance},
+  description={It is the color part of an image. In our vision sistem there are
+    three type of Cone cells that are specialized in the chrominance. Glossary:
+    \glspl{Cone cell}}
+}
+
+\newglossaryentry{Cone cell}{
+  name={Cone cell},
+  description={In our vision sistem there are three type of Cone cells, each one
+    specialized in one of the light frequency domains. These are the short,
+    medium and long frequencies.  Altough they do not match one specific color,
+    they are often classified as being specialized in blue, green and red colors
+  respectively}
+}
+
+\newglossaryentry{Rod cell}{
+  name={Rod cell},
+  description={This is a specific kind of cell from our vision system. They are
+  able to percieve the amount of light. For that reason they are most used on
+low light situations where the color is not correctly perceived}
+}
+
+\newglossaryentry{threshold function}{
+  name={Threshold Function},
+  description={Step function that takes the value of zero for inputs smaller or
+  equal to zero and one otherwise}
+}
+
+\newglossaryentry{synapse}{
+  name={synapse},
+  description={}
+}
+
+\newglossaryentry{soma}{
+  name={Soma},
+  description={}
+}
+
+\newglossaryentry{axon hillock}{
+  name={axon hillock},
+  description={}
+}
+
+\newglossaryentry{heaviside function}{
+  name={Heaviside function},
+  description={Also known as a \gls{threshold function} in the engineering
+literature, it is a discontinuous function with value zero in the negative side
+and one in the positive side}
+}
+
+\newglossaryentry{universal approximator}{
+  name={universal approximator},
+  description={In the context of \glspl{ANN}, it has been demonstrated that a
+  \glsfirst{FNN} with at least one hidden layer and a sufficient number of
+  hidden units and some specific activation functions can approximate any
+  continuous function. The set of activation functions that assures this fact are
+  continuous sigmoidal functions; or nonconstant, bounded, and monotonically
+  increasing continuous functions}
+}
+
+\newglossaryentry{cybernetics}{
+  name={cybernetics},
+  description={From greek (Kyvernitikí) ``governance''. Field of study that
+  connect different fields: control systems, learning, cognition, adaptation}
+}
+
+\newglossaryentry{mean field theory}{
+  name={mean field theory},
+  description={It is a technique used in physics and probability theory to
+  simplify the behaviour of large and complex systems with multiple individuals.
+It simplifies the complex interactions by an average value that is easier to
+compute}
+}
+
+ \newglossaryentry{sigmoid belief network}{
+   name={sigmoid belief network},
+   description={A sigmoid belief network is a directed and acyclic graph,
+   where the output of each node computes a logistic function given the binary
+ states of its parents}
+ }
+
+\newglossaryentry{Bayesian network}{
+  name={Bayesian network},
+  description={See \glsfirst{BN}}
+}
+
+\newglossaryentry{Associationism}{
+  name={Associationism},
+  description={It is the idea that mental processes are triggered by previous
+    states. The connections between these states are called associations. Some
+    of the first ideas have been seen in the work of Plato and Aristotle. In the
+    17th century the British ``Associationist School'' was funded, where John
+    Locke, David Hume, David Hartley, James Mill, or Ivan Pavlov participated
+  and used these ideas}
+}
+
+\newglossaryentry{Perceptron}{
+  name={Perceptron},
+  description={The \gls{Perceptron} was one of the first \glsfirstplural{ANN}
+  developed in the 50s by Frank Rosenblatt. It was able to learn from examples
+  and classify patterns into different classes. Altough it performs binary
+  classifications, it can classify between multiple classes by using various
+output units}
+}
+
+\newglossaryentry{memistor}{
+  name={memistor},
+  description={It is a electric component designed by Bernard Wirdrow in 1960 to
+    store information in form of electrical impedance. It was the principal
+    component for the posterior creation of the \gls{Adaline} }
+}
+
+\newglossaryentry{C++}{
+  name={C++},
+  description={}
+}
+
+\newglossaryentry{Python}{
+  name={Python},
+  description={}
+}
+
+\newglossaryentry{Matlab}{
+  name={Matlab},
+  description={}
+}
+
+\newglossaryentry{delta rule}{
+  name={delta rule},
+  description={In machine learning, the delta rule is the update of the weights
+  of a model that follow the gradient on the error surface. It is a technique to
+minimize the training error by performing several steps of gradient descent}
+}
+
+\newglossaryentry{credit-assignment problem}{
+  name={credit-assignment problem},
+  description={This is a common problem on machine learning when assigning the
+    responsability of the error to different parts of a model. For example, in
+    \glsfirst{ANN} it is difficult to assign the error of the neurons that are not directly
+    connected to the output}
+}
+
+\newglossaryentry{simple linear regression}{
+  name={simple linear regression},
+  description={It is a technique to fit linearly a set of samples of a
+  dependent variable given a single explanatory variable}
+}
+
+\newglossaryentry{multiple linear regression}{
+  name={multiple linear regression},
+  description={It is a technique to fit linearly a set of samples of a dependent
+  variable given multiple explanatory variables}
+}
+
+\newglossaryentry{multivariate linear regression}{
+  name={multivariate linear regression},
+  description={It is a technique to fit linearly a set of samples of multiple
+  correlated dependent variables given multiple explanatory variables}
+}
+
+\newglossaryentry{logistic regression}{
+  name={logistic regression},
+  description={It is a probabilistic technique for pattern classification models
+    for binary predictions. It uses the \gls{logistic function} of a set of
+  variables to generate the probability response}
+}
+
+\newglossaryentry{sigmoid function}{
+  name={sigmoid function},
+  description={Mathematical functions with ``S'' shape, commonly monotonically
+  increasing and with assymptotic behaviour at both ends}
+}
+
+\newglossaryentry{logistic function}{
+  name={logistic function},
+  description={Is a type of \gls{sigmoid function} with values $[0,0.5]$
+on the negative side and values $[0.5,1]$ on the positive side}
+}
+
+\newglossaryentry{hyperbolic tangent function}{
+  name={hyperbolic tangent function},
+  description={It is a \gls{sigmoid function} with negative and positive values
+  on the negative and positive side respectively. It has asymptotic behaviour
+  towards $-1$ and $1$, and it can behave locally as linear or as a step
+  function. For that reason, it has been extensively
+  used as activation functions in \glsfirstplural{ANN}}
+}
+
+\newglossaryentry{softmax function}{
+  name={softmax function},
+  description={The softmax function is a function that reduces a finite vector of
+  real values to a vector of the same size with values in the interval $[0,1]$.
+It uses the exponential function and a normalization factor to each element of
+the vector}
+}
+
+\newglossaryentry{epoch}{
+  name={epoch},
+  description={In machine learning, when a model is being trained with a set of
+  data, one epoch corresponds to one iteration over the complete set}
+}
+
+\newglossaryentry{weight decay}{
+  name={weight decay},
+  description={The weight decay is a regularization technique designed for
+    \glsfirst{ANN} that adds a penalty to the size of the weights of the network
+  into the cost function}
+}
+
+\newglossaryentry{momentum}{
+  name={momentum},
+  description={In the gradient descent algorithm, momentum is a technique used
+  to update the parameters at a given step with the actual gradient and part
+of the previous update}
+}
+
+\newglossaryentry{deep learning}{
+  name={deep learning},
+  description={It is a term being used lately to define \glsfirstplural{ANN}
+that are not shallow. The hidden representation of these models is supposed to
+find hierarchical representations of the data. Also the hierarchical structure
+is more effective to reuse the features in lower layers}
+}
+
+\newglossaryentry{backpropagation}{
+  name={backpropagation},
+  description={It is a method of propagating the error backwards in an
+    \glsfirst{ANN} to perform credit assignment in the lower levels of the
+    network. This is the common method to train a \gls{ANN} toghether with an
+  optimization method using gradient descent}
+}
+
+\newglossaryentry{dropout}{
+  name={dropout},
+  description={It is a regularization technique applied to \glsfirstplural{ANN}.
+It consists on the random inhibition of the output of certain neurons during the
+training, while keeping all the averaged outputs during the test phase. This
+technique has demonstrated empirically its efficacy for generalization}
+}
+
+\newglossaryentry{multimodal learning}{
+  name={multimodal learning},
+  description={In machine learning, it is a set of techniques to agregate
+  features from different sources in a variety of forms, in order to solve a
+pattern classification problem}
+}
+
+\newglossaryentry{Hopfield network}{
+  name={Hopfield network},
+  description={Is a type of \glsfirst{RNN} with symetric connections that is
+guaranteed to converge to a local minimum energy state. It can be used as a
+content-addressable memory}
+}
+
+\newglossaryentry{cross-validation}{
+  name={cross-validation},
+  description={Is a technique to compare models or their hyperparameters given a
+  finite training set. The training is subdivided into smaller parts and the
+  models are validated with one part and trained with the rest. The performance
+  of the models in each validation section is averaged and compared with the
+  rest of the models}
+}
+
+
+%\newglossaryentry{}{
+%  name={},
+%  description={}
+%}

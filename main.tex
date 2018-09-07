@@ -1,4 +1,5 @@
 \documentclass[b5paper]{report}
+\usepackage[nottoc,numbib]{tocbibind}
 \usepackage[left=1cm, right=1cm, top=3cm, bottom=3cm]{geometry}
 \usepackage[utf8]{inputenc}
 %\usepackage{hyperref}
@@ -10,10 +11,17 @@
 \usepackage{natbib}
 \usepackage{bm}
 
+\usepackage[toc,seeautonumberlist,acronym]{glossaries}
 \include{latex/macros/mathsPerello}
 \include{latex/macros/figurePerello}
 \include{latex/macros/notesPerelloNieto}
 \include{latex/macros/graphsPerelloNieto}
+\include{acronyms}
+
+%\include{glossary}
+%% GLOSSARY
+\makeglossaries
+\loadglsentries[main]{glossary}
 
 % Adding multiple bibliographies
 % See here: https://tex.stackexchange.com/questions/44589/how-to-split-bibliography-for-different-sections
@@ -34,6 +42,10 @@
 %\bibliographystyle{apalike}
 \bibliographystyle{abbrv}
 \bibliography{references}
+
+\printglossary[type=\acronymtype] % prints just the list of acronyms
+\printglossary[type=main] % if no option is supplied the default glossary is printed.
+
 
 \chapter{Introduction}
 
@@ -1045,7 +1057,9 @@ and about Deep Gaussian processes:
 
 %\section{GPs for large data and non-linear models}
 
-\chapter{Deep Learning by Rob Fergus 14:30--16:00}
+\chapter{Deep Learning by Rob Fergus}
+
+ 14:30--16:00
 
 ``Rob Fergus is an Associate Professor of Computer Science at the Courant
 Institute of Mathematical Sciences, New York University. He is also a Research
@@ -1642,8 +1656,8 @@ We can also use the log-likelihood
 
 \subsection{Loss minimization}
 
-In order to minimize the loss it is necessary to use optimization techniques,
-in the case of Artificial Neural Networks (ANNs) is by using backpropagation to
+In order to minimize the loss it is necessaGraph Neural Networkry to use optimization techniques,
+in the case of \glspl{ANN} is by using backpropagation to
 compute the partial derivatives of the parameters with respect the input using
 the chain rule of derivatives
 
@@ -1691,7 +1705,7 @@ are not tokenizing the words first by extracting any meaning of the word, in
 this sense the words ``cat'' and ``cats'' have completly independent indices.
 
 At the end the words are encoded as one-hot-encoding with a bit to 1 for the
-corresponding index. This will be given to the ANN and will be fordard
+corresponding index. This will be given to the \gls{ANN} and will be fordard
 propagated to obtain a hidden representation $e_i$. This can be interpreted as
 a table lookup from a word to a hidden embedding (eg. a fixed matrix $W$ of
   dimmension $\text{\#tokens} \times \text{\#arbitrary dimesion}$ that is
@@ -1770,7 +1784,7 @@ between 0 and 1 that sum to one) for each sentence.
 
 \subsection{N-Gram language models}
 
-Before ANNs were used, the idea about ussing the conditional probabilities was
+Before \glspl{ANN} were used, the idea about ussing the conditional probabilities was
 already used on a smaller scale with N-gram models. In this case the $N$ needs
 to be decided in advance.
 
@@ -1902,8 +1916,9 @@ citation}.
 
 Allen 1987 ieee icnn, a brief resurrection of Neural Networks in 1997 by
 Castano and Casacuberta 1997 \cite{castano1997machine}, then in 2006 Schwenk
-2006 \cite{schwenk2006continuous} as a filter source to SMT to ANN to target sentence, then Devlin 2014 from
-source to SMT + ANN to target sentence, then source to ANN to target sentence.
+2006 \cite{schwenk2006continuous} as a filter source to SMT to \gls{ANN} to target sentence, then Devlin 2014 from
+source to SMT + \gls{ANN} to target sentence, then source to
+\gls{ANN} to target sentence.
 
 \subsection{Encoding: Token representation}
 
@@ -1967,7 +1982,7 @@ without lots of examples. For example, translate korean to Japanese and then to
 English as the corpus between them is larger than the Korean to English.
 
 With this idea, there has been some work to generate a pivot common language
-that is automatically learned in an ANN. For example, an encoder/decoder
+that is automatically learned in an \gls{ANN}. For example, an encoder/decoder
 aproach in \cite{firat2016multi, firat2016zero} creates one encoder per source
 and decoder per target, and a model is learned for every pair. Later Johnson et
 al, 2016, Ha et al, 2016, Lee et al 2017, and Gu et al, 2018 work on an
@@ -2229,7 +2244,9 @@ What tools or framewors: \textbf{there are no tools yet}, R package for
 individual methods. Literature and the implementations are scattered,
 \textbf{necessary to unify!}.
 
-\chapter{Reinforcement Learning by Jan Peters, Fri. 14:30--16:00}
+\chapter{Reinforcement Learning by Jan Peters}
+
+Fri. 14:30--16:00
 
 \section{Optimal Control Systems}
 
@@ -2480,8 +2497,9 @@ the trajectory distribution.
   \item role of tfeatures is unclear in most methods
 \end{enumerate}
 
-\chapter{Probabilistic Numerics: Nano-machine-learning by Michael A Osborne
-9:30--11:00}
+\chapter{Probabilistic Numerics: Nano-machine-learning by Michael A Osborne}
+
+9:30--11:00
 
 Numerics is becoming one of the important fields of Machine Learning.
 
@@ -2724,7 +2742,9 @@ these methods tend to be more exploratory
 What are humans still good for?
 
 
-\chapter{Kernel methods by Arthur Gretton Tue. 11:30--13:00}
+\chapter{Kernel methods by Arthur Gretton}
+
+ Tue. 11:30--13:00
 
 \begin{itemize}
   \item Testing goodnes of fit: Given a model $P$ and samples $Q$
@@ -3262,280 +3282,6 @@ We can create a new feature tha \dots
   \caption{Vulnerable variables}
 \end{figure}
 
-\chapter{Advances in Machine Learning for Molecules by José Miguel
-Hernández-Lobato. Thu. 11:30--13:00}
-
-New molecules and materials can potentially solve important existing challenges
-like drug and mediceine design for health care, energy production and storage,
-and greenhouse gas conversion., energy production and storage, and greenhouse
-gas conversion.
-
-However, progress in drug and material discovery has been slow because of the
-cost of colecting data amd making decision based on data, which require a lot
-of human intervention.
-
-Currently there are plenty of available datasets with the properties of real
-and virtual molecules. It is also possible to simulate new molecules by
-estimating their properties with \emph{density functional theory} (DFT) before
-they are made in the laboratory.
-
-Some example projects are \dots
-
-\begin{mybox}
-  \textbf{``Robot scientist'' speeds up drug discovery}
-
-\textbf{Automated AI lab that learns and formulates hypotheses has identified
-promising anti-cancer and anti-malarial compounds}
-
-An artificial intelligence system – or ‘robot scientist’ – capable of screening
-potential drugs almost completely independently could speed up drug
-development, say the UK researchers who created it. The approach has already
-identified some promising leads, including an anti-cancer compound which also
-shows anti-malarial properties.
-
-The robot scientist – named ‘Eve’ – is actually a collection of machines
-including several computers hooked up to the kind of automated instruments
-already found in many labs. ‘The idea is to automate scientific research,’ says
-lead author Ross King from the University of Manchester. ‘You tell the system
-about the area of research you’re interested in … and then the computer has an
-automated way of forming novel hypotheses about that area of science. It can
-then design experiments to test these hypotheses and the lab robots go ahead
-and actually do the experiments.’ The computer can also interpret the results,
-modify its hypotheses and construct new tests completely autonomously, only
-needing occasional human assistance to top up reagents and remove waste.
-
-Eve’s predecessor – Adam – carried out genetic experiments in yeast and became
-the first robotic system to independently make a scientific discovery. ‘What we
-wanted to do with Eve was apply the same approach to something with more
-immediate societal values,’ says King. Eve was designed specifically for drug
-development and the team initially chose to focus on neglected tropical
-diseases.
-
-Many parts of the process, such as high throughput library screening, are
-already highly automated, and Eve is kitted out with all the necessary
-equipment to screen tens of thousands of compounds a day and identify leads.
-But the system can also intelligently respond to results and create
-standardised assays using synthetic biology. Once it has identified a lead
-compound, Eve can engineer specific strains of yeast needed to screen for
-activity against a particular disease. This makes it both quicker and cheaper
-than standard drug screening methods, even those that already use automated
-equipment.
-
-The system already has proven successes, highlighting several drug candidates
-that could be ‘repurposed’. For example, it showed the anti-cancer compound
-TNP-470 can also attack the malarial parasite Plasmodium vivax by inhibiting an
-essential enzyme. This compound is now being looked at in Brazil, where this
-form of malaria is prevalent.
-
-‘It was surprising to me how easy it was to find interesting compounds for
-these diseases,’ says King. ‘When I started this I assumed that the main focus
-of the research would be proof-of-principle.’
-
-Andrey Rzhetsky, a geneticist and computational scientist at the University of
-Chicago, US, who was not involved in the study, praised the group’s work. ‘I am
-definitely a believer in this direction of AI [artificial intelligence] work,’
-he comments.
-
-In future, King says, robot scientists like Eve could be used by pharmaceutical
-companies to streamline the drug development process, or explore potential new
-functions for existing drugs. ‘We found some really interesting compounds,’ he
-says, ‘And there are even more exciting results that we have yet to report.’
-
-References
-K Williams et al, J. R. Soc., Interface, 2015, DOI: 10.1098/rsif.2014.1289
-Source:
-\href{https://www.chemistryworld.com/news/robot-scientist-speeds-up-drug-discovery/8230.article}{chemistryworld
-by Emma Stoye}
-\end{mybox}
-
-Machine Learning (ML) can accelerate and automate the discovery process. If DFT can
-be slow, it is possible to estimate the results with ML.
-
-Some of the challenges is the fact that common ML methods only accept vectorial
-input data, and molecules are commonl represented by graphs.
-
-Some of the representations of molecules in machine learning are: (1) molecular
-fingerprints, (2) SMILES, or (3) Graph neural networks (GNNs).
-
-While the reaction prediction model can be achieved by GNN-based, or seq2seq
-methods.
-
-\section{Molecular representation for ML}
-
-\subsection{Molecular fingerprints}
-
-An encoding of a molecular graph into a binary string (See Rogers et al. 2010
-\cite{rogers2010extended})
-
-The algorithm takes as an input a molecular graph with radious parameter $R$
-and length $L$.
-
-\begin{figure}[h]
-  \centering
-  \begin{tikzpicture}[x=0.5cm,y=0.5cm]
-    \node[main node] (1) {$C$};
-    \node[main node] (2) [right = 1.3 of 1]  {$R$};
-    \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$O$};
-    \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$Z$};
-    \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$H$};
-    \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$H$};
-
-    \path[thick]
-    (1) edge node {} (2)
-    (1) edge node {} (3)
-    (1) edge node {} (4)
-    (2) edge node {} (4)
-    (3) edge node {} (4)
-    (3) edge node {} (5)
-    (3) edge node {} (6);
-  \end{tikzpicture}
-\end{figure}
-
-\begin{enumerate}
-  \item Assign integers to atoms by applying has function to atom features
-  \begin{figure}[h]
-    \centering
-    \begin{tikzpicture}[x=0.5cm,y=0.5cm]
-      \node[main node] (1) {$1$};
-      \node[main node] (2) [right = 1.3 of 1]  {$2$};
-      \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$3$};
-      \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$4$};
-      \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$5$};
-      \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$5$};
-
-      \path[thick]
-      (1) edge node {} (2)
-      (1) edge node {} (3)
-      (1) edge node {} (4)
-      (2) edge node {} (4)
-      (3) edge node {} (4)
-      (3) edge node {} (5)
-      (3) edge node {} (6);
-    \end{tikzpicture}
-  \end{figure}
-  \item For $r=1,\dots,R$
-    \begin{enumerate}
-      \item Concatenate atom integers with integers of tneighboring atoms
-      \begin{figure}[h]
-        \centering
-        \begin{tikzpicture}[x=0.5cm,y=0.5cm]
-          \node[main node] (1) {$1,234$};
-          \node[main node] (2) [right = 1.3 of 1]  {$2,14$};
-          \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$3,1455$};
-          \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$4,123$};
-          \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$5,3$};
-          \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$5,3$};
-
-          \path[thick]
-          (1) edge node {} (2)
-          (1) edge node {} (3)
-          (1) edge node {} (4)
-          (2) edge node {} (4)
-          (3) edge node {} (4)
-          (3) edge node {} (5)
-          (3) edge node {} (6);
-        \end{tikzpicture}
-      \end{figure}
-      \item Assign new integers to atoms by applying has function to
-        concatenation
-      \begin{figure}[h]
-        \centering
-        \begin{tikzpicture}[x=0.5cm,y=0.5cm]
-          \node[main node] (1) {$20$};
-          \node[main node] (2) [right = 1.3 of 1]  {$45$};
-          \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$13$};
-          \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$31$};
-          \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$16$};
-          \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$16$};
-
-          \path[thick]
-          (1) edge node {} (2)
-          (1) edge node {} (3)
-          (1) edge node {} (4)
-          (2) edge node {} (4)
-          (3) edge node {} (4)
-          (3) edge node {} (5)
-          (3) edge node {} (6);
-        \end{tikzpicture}
-      \end{figure}
-    \end{enumerate}
-  \item Create $L$-dimensional zero vector $f$
-  \item map generated integers to an entry in $f$ which is set to 1.
-    (01110001010001001000100101)
-\end{enumerate}
-
-
-This method is fast to compute, in practice produces very good predictive
-performance, and it is easy to interpret as the features represent the presence
-of substructure.
-
-On the other hand, the generated features are handcrafted and not data
-dependent, and they are not smooth (similar segments may have different
-representations).
-
-\subsection{SMILES}
-
-Simplified Molecular Input Line Entry System (SMILES) allows the representation
-of a molecular graph in line notation. For example, $CC$ represents $CH_3CH_3$
-(ethane), $CC(=O)O$ represents $CH_3COOH$ (acetic acid), $C1CCCCC1$ represents
-$C_6H_{12}$ (cyclo\dots). See Sanchez-Lengleling and Aspuru-Guzik, 2018
-\cite{gomez2018automatic}.
-
-With the new sequence representations as stirngs it is possible to apply
-Artificial Neural Networks. Some examples are Recurrent Neural Networks applied
-to the string sequence to predict the following character, or use 1D
-convolutional Neural Networks with lefat and right context.
-
-With this method is easy to encode molecules as simple text strings, relatively
-easy to understand by humans, and NLP methods can be applied.
-
-One of the disadvantages of SMILES is that the representation is not invariant
-to the starting atom, and atoms close inthe graph may be far away in the string
-representation.
-
-\subsection{Graph Neural Networks (GNNs)}
-
-This representation naturally encodes invariances to permutation of nodes, and
-distances between atoms (See more about GNNs in \cite{scarselli2009graph},
-\cite{li2018learning}).
-
-A GNN includes the vecotrial variables
-
-\begin{enumerate}
-  \item $\{\vec{e}_{j\sim k}\}$ vecot of edges between nodes j and k
-  \item $\{\vec{v}_i\}_{i=1}^N$ node features
-  \item $\vec{u}$ are global features summarizing the graph properties
-\end{enumerate}
-
-\subsubsection{Set functions and auxiliary variables}
-
-Set functions have as input sets of elements and as output a single element
-summarizing the input set. It is invariant to input permuatation and accepts a
-variable number of arguments. Some examples areelementwise summation, mean,
-maximum, nimumum, \dots
-
-The forward pass in a GNN is
-
-Given an initial set of vertices $v$, edges $e$ and global features $u$.
-
-\begin{enumerate}
-  \item For every edge
-    \begin{enumerate}
-      \item  updates the edge features
-    \end{enumerate}
-  \item For every vertice
-    \begin{enumerate}
-      \item summarize the incoming edge to $i$
-      \item Update feature for node $i$
-    \end{enumerate}
-  \item Sumamrize all edges
-  \item Summarize all nodes
-  \item Update global features
-  \item Compute prediction from features $\vec{u}$
-  \item return $MLP(\vec{u})$
-  \item Repeat all the steps several times $l=1,\dots,L$
-\end{enumerate}
-
 \chapter{Machine Learning in the industry}
 
 \section{Real-world ML Challenges at the Scale of Banking by BBVA Data and
@@ -4005,5 +3751,294 @@ Main idea is
         divergences
     \end{itemize}
 \end{itemize}
+
+\chapter{Advances in Machine Learning for Molecules by José Miguel
+Hernández-Lobato}
+
+Thu. 11:30--13:00
+
+New molecules and materials can potentially solve important existing challenges
+like drug and mediceine design for health care, energy production and storage,
+and greenhouse gas conversion., energy production and storage, and greenhouse
+gas conversion.
+
+However, progress in drug and material discovery has been slow because of the
+cost of colecting data amd making decision based on data, which require a lot
+of human intervention.
+
+Currently there are plenty of available datasets with the properties of real
+and virtual molecules. It is also possible to simulate new molecules by
+estimating their properties with \emph{density functional theory} (DFT) before
+they are made in the laboratory.
+
+Some example projects are \dots
+
+\begin{mybox}
+\textbf{\Large ``Robot scientist'' speeds up drug discovery}
+
+\textbf{Automated AI lab that learns and formulates hypotheses has identified
+promising anti-cancer and anti-malarial compounds}
+
+An artificial intelligence system – or ‘robot scientist’ – capable of screening
+potential drugs almost completely independently could speed up drug
+development, say the UK researchers who created it. The approach has already
+identified some promising leads, including an anti-cancer compound which also
+shows anti-malarial properties.
+
+The robot scientist – named ‘Eve’ – is actually a collection of machines
+including several computers hooked up to the kind of automated instruments
+already found in many labs. ‘The idea is to automate scientific research,’ says
+lead author Ross King from the University of Manchester. ‘You tell the system
+about the area of research you’re interested in … and then the computer has an
+automated way of forming novel hypotheses about that area of science. It can
+then design experiments to test these hypotheses and the lab robots go ahead
+and actually do the experiments.’ The computer can also interpret the results,
+modify its hypotheses and construct new tests completely autonomously, only
+needing occasional human assistance to top up reagents and remove waste.
+
+Eve’s predecessor – Adam – carried out genetic experiments in yeast and became
+the first robotic system to independently make a scientific discovery. ‘What we
+wanted to do with Eve was apply the same approach to something with more
+immediate societal values,’ says King. Eve was designed specifically for drug
+development and the team initially chose to focus on neglected tropical
+diseases.
+
+Many parts of the process, such as high throughput library screening, are
+already highly automated, and Eve is kitted out with all the necessary
+equipment to screen tens of thousands of compounds a day and identify leads.
+But the system can also intelligently respond to results and create
+standardised assays using synthetic biology. Once it has identified a lead
+compound, Eve can engineer specific strains of yeast needed to screen for
+activity against a particular disease. This makes it both quicker and cheaper
+than standard drug screening methods, even those that already use automated
+equipment.
+
+The system already has proven successes, highlighting several drug candidates
+that could be ‘repurposed’. For example, it showed the anti-cancer compound
+TNP-470 can also attack the malarial parasite Plasmodium vivax by inhibiting an
+essential enzyme. This compound is now being looked at in Brazil, where this
+form of malaria is prevalent.
+
+‘It was surprising to me how easy it was to find interesting compounds for
+these diseases,’ says King. ‘When I started this I assumed that the main focus
+of the research would be proof-of-principle.’
+
+Andrey Rzhetsky, a geneticist and computational scientist at the University of
+Chicago, US, who was not involved in the study, praised the group’s work. ‘I am
+definitely a believer in this direction of AI [artificial intelligence] work,’
+he comments.
+
+In future, King says, robot scientists like Eve could be used by pharmaceutical
+companies to streamline the drug development process, or explore potential new
+functions for existing drugs. ‘We found some really interesting compounds,’ he
+says, ‘And there are even more exciting results that we have yet to report.’
+
+\textbf{References:}
+K Williams et al, J. R. Soc., Interface, 2015, DOI: 10.1098/rsif.2014.1289
+\textbf{Source:}
+\href{https://www.chemistryworld.com/news/robot-scientist-speeds-up-drug-discovery/8230.article}{chemistryworld
+by Emma Stoye}
+\end{mybox}
+
+Machine Learning (ML) can accelerate and automate the discovery process. If DFT can
+be slow, it is possible to estimate the results with ML.
+
+Some of the challenges is the fact that common ML methods only accept vectorial
+input data, and molecules are commonl represented by graphs.
+
+Some of the representations of molecules in machine learning are: (1) molecular
+fingerprints, (2) SMILES, or (3) Graph neural networks (GNNs).
+
+While the reaction prediction model can be achieved by \gls{GNN}-based, or seq2seq
+methods.
+
+\section{Molecular representation for ML}
+
+\subsection{Molecular fingerprints}
+
+An encoding of a molecular graph into a binary string (See Rogers et al. 2010
+\cite{rogers2010extended})
+
+The algorithm takes as an input a molecular graph with radious parameter $R$
+and length $L$.
+
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[x=0.5cm,y=0.5cm]
+    \node[main node] (1) {$C$};
+    \node[main node] (2) [right = 1.3 of 1]  {$R$};
+    \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$O$};
+    \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$Z$};
+    \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$H$};
+    \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$H$};
+
+    \path[thick]
+    (1) edge node {} (2)
+    (1) edge node {} (3)
+    (1) edge node {} (4)
+    (2) edge node {} (4)
+    (3) edge node {} (4)
+    (3) edge node {} (5)
+    (3) edge node {} (6);
+  \end{tikzpicture}
+\end{figure}
+
+\begin{enumerate}
+  \item Assign integers to atoms by applying has function to atom features
+  \begin{figure}[h]
+    \centering
+    \begin{tikzpicture}[x=0.5cm,y=0.5cm]
+      \node[main node] (1) {$1$};
+      \node[main node] (2) [right = 1.3 of 1]  {$2$};
+      \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$3$};
+      \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$4$};
+      \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$5$};
+      \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$5$};
+
+      \path[thick]
+      (1) edge node {} (2)
+      (1) edge node {} (3)
+      (1) edge node {} (4)
+      (2) edge node {} (4)
+      (3) edge node {} (4)
+      (3) edge node {} (5)
+      (3) edge node {} (6);
+    \end{tikzpicture}
+  \end{figure}
+  \item For $r=1,\dots,R$
+    \begin{enumerate}
+      \item Concatenate atom integers with integers of tneighboring atoms
+      \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[x=0.5cm,y=0.5cm]
+          \node[main node] (1) {$1,234$};
+          \node[main node] (2) [right = 1.3 of 1]  {$2,14$};
+          \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$3,1455$};
+          \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$4,123$};
+          \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$5,3$};
+          \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$5,3$};
+
+          \path[thick]
+          (1) edge node {} (2)
+          (1) edge node {} (3)
+          (1) edge node {} (4)
+          (2) edge node {} (4)
+          (3) edge node {} (4)
+          (3) edge node {} (5)
+          (3) edge node {} (6);
+        \end{tikzpicture}
+      \end{figure}
+      \item Assign new integers to atoms by applying has function to
+        concatenation
+      \begin{figure}[h]
+        \centering
+        \begin{tikzpicture}[x=0.5cm,y=0.5cm]
+          \node[main node] (1) {$20$};
+          \node[main node] (2) [right = 1.3 of 1]  {$45$};
+          \node[main node] (3) [below left = 1.3 and 0.5 of 1]  {$13$};
+          \node[main node] (4) [below right = 1.3 and 0.5 of 2] {$31$};
+          \node[main node] (5) [below right = 1.3 and 0.5 of 3]  {$16$};
+          \node[main node] (6) [below left = 1.3 and 0.5 of 4] {$16$};
+
+          \path[thick]
+          (1) edge node {} (2)
+          (1) edge node {} (3)
+          (1) edge node {} (4)
+          (2) edge node {} (4)
+          (3) edge node {} (4)
+          (3) edge node {} (5)
+          (3) edge node {} (6);
+        \end{tikzpicture}
+      \end{figure}
+    \end{enumerate}
+  \item Create $L$-dimensional zero vector $f$
+  \item map generated integers to an entry in $f$ which is set to 1.
+    (01110001010001001000100101)
+\end{enumerate}
+
+
+This method is fast to compute, in practice produces very good predictive
+performance, and it is easy to interpret as the features represent the presence
+of substructure.
+
+On the other hand, the generated features are handcrafted and not data
+dependent, and they are not smooth (similar segments may have different
+representations).
+
+\subsection{SMILES}
+
+Simplified Molecular Input Line Entry System (SMILES) allows the representation
+of a molecular graph in line notation. For example, $CC$ represents $CH_3CH_3$
+(ethane), $CC(=O)O$ represents $CH_3COOH$ (acetic acid), $C1CCCCC1$ represents
+$C_6H_{12}$ (cyclo\dots). See Sanchez-Lengleling and Aspuru-Guzik, 2018
+\cite{gomez2018automatic}.
+
+With the new sequence representations as stirngs it is possible to apply
+Artificial Neural Networks. Some examples are Recurrent Neural Networks applied
+to the string sequence to predict the following character, or use 1D
+convolutional Neural Networks with lefat and right context.
+
+With this method is easy to encode molecules as simple text strings, relatively
+easy to understand by humans, and \acrfull{nlp} methods can be applied.
+
+One of the disadvantages of SMILES is that the representation is not invariant
+to the starting atom, and atoms close inthe graph may be far away in the string
+representation.
+
+\subsection{Graph Neural Networks (GNNs)}
+
+This representation naturally encodes invariances to permutation of nodes, and
+distances between atoms (See more about \glspl{GNN} in \cite{scarselli2009graph},
+\cite{li2018learning}).
+
+A \gls{GNN} includes the vecotrial variables
+
+\begin{enumerate}
+  \item $\{\vec{e}_{j\sim k}\}$ vecot of edges between nodes j and k
+  \item $\{\vec{v}_i\}_{i=1}^N$ node features
+  \item $\vec{u}$ are global features summarizing the graph properties
+\end{enumerate}
+
+\subsubsection{Set functions and auxiliary variables}
+
+Set functions have as input sets of elements and as output a single element
+summarizing the input set. It is invariant to input permuatation and accepts a
+variable number of arguments. Some examples areelementwise summation, mean,
+maximum, nimumum, \dots
+
+The forward pass in a \gls{GNN} is
+
+Given an initial set of vertices $v$, edges $e$ and global features $u$.
+
+\begin{enumerate}
+  \item For every edge
+    \begin{enumerate}
+      \item  updates the edge features
+    \end{enumerate}
+  \item For every vertice
+    \begin{enumerate}
+      \item summarize the incoming edge to $i$
+      \item Update feature for node $i$
+    \end{enumerate}
+  \item Sumamrize all edges
+  \item Summarize all nodes
+  \item Update global features
+  \item Compute prediction from features $\vec{u}$
+  \item return $MLP(\vec{u})$
+  \item Repeat all the steps several times $l=1,\dots,L$ (every step increases
+    the range of molecules; it is necessary to set $L$ to capture the biggest
+  structure in which we are interested).
+\end{enumerate}
+
+Specific implementations of \glspl{GNN}
+
+\begin{itemize}
+  \item Message passing neural network (MPNN) Gilmer et al, 2017
+  \item Gated graph neural network (GGNN) Li et al. 2016
+  \item \acrfull{wln}. Jin et al. 2017
+  \item Neural graph fingerprints (NGFs). Duvenaud et al. 2015
+\end{itemize}
+
+Advantages of \glspl{GNN}
 
 \end{document}

@@ -1,6 +1,6 @@
 # Machine Learning Summer School 2018
 
-This is my own summary notes ([pdf](main.pdf))of the [MLSS 2018 held at Universidad Autónoma de
+This is my own summary notes ([pdf](main.pdf)) of the [MLSS 2018 held at Universidad Autónoma de
 Madrid](http://mlss.ii.uam.es/mlss2018/index.html), Spain from Aug. 27 to Sep.
 7, 2018.
 
