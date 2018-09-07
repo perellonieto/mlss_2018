@@ -3536,5 +3536,474 @@ Given an initial set of vertices $v$, edges $e$ and global features $u$.
   \item Repeat all the steps several times $l=1,\dots,L$
 \end{enumerate}
 
-\end{document}
+\chapter{Machine Learning in the industry}
 
+\section{Real-world ML Challenges at the Scale of Banking by BBVA Data and
+Analytics}
+
+Up to this moment, ML in banking has focused on fraud detection.
+
+Working at the moment on an app for expenses prediction. Hundreds of millions
+of time series.
+
+Classification of transactions, they tested Word2vec with Vector of Locally
+Aggregated Descriptors (VLAD) pooling.
+
+Expense forecasting with LSTM layers and a dense layer on top. Now the expenses
+forecasting is including uncertainty on the predictions (See Uncertainty
+  Modelling in Deep Networks: Forecasting Short and Noisy Series
+\cite{brando2018uncertainty})
+
+How to compare customers (see cleint2vec: Towards systematic baselines for
+banking applications \cite{baldassini2018client2vec})
+
+Recommender systems, modelling users for target advertising.
+
+In order to create a loss functions that considers (See, A Missing Information
+Loss function for implicit feedback datasets \cite{arevalo2018missing} )
+
+Reinforcement Learning for Fair Dynamic Pricing \cite{maestre2018reinforcement}
+
+What is not in the books of Machine Learning when applying methods in the
+industry:
+
+\begin{itemize}
+  \item Fairness
+  \item Privacy
+  \item Ethics
+  \item Business
+  \item Data acquisition/labelling
+  \item UX/UI
+  \item Design
+\end{itemize}
+
+\section{Data Efficient Reinforcement Learning by PROWLER.io}
+
+Based in three teams: Probabilistic team, reinforcement learning team, and multiagent team.
+
+Currne tReinforcement learning technology, successes using deep Q-Networks.
+
+\section{Lynx: real-time accurate fraud detection over massive data.
+Instituto de Ingenieria del conocimento by Álvaro Barbero Jiménez}
+
+There are 8 countries using Lynx, and over 30,000 million transactions
+processed per year.
+
+Their system need to make decision in a few miliseconds.
+
+Device tries to make an operation, this is sent to the institution (bank), the
+institution sends a copy of the operation to Lynx, that will estimate the
+probability of fault in some miliseconds and send the answer back to the
+institution. Then the institution has to choose on what action to take and send
+back the operation success (or deny) to the device.
+
+The decisions are taken with two types of analysis
+
+\begin{enumerate}
+  \item Parametric Analysis
+  \item \dots
+\end{enumerate}
+
+Approach for programming: Use Python, R, elastic and cocker in order to test
+ideas fast, and if the results are good, implement it on C, Bash (see book Data
+science at the command line) or Fortran.
+
+One of the problems of detecting fraud is that the fraudulent transactions
+evolve as they are detected. It is necessary to use Adaptive models and train
+with incremental learning.
+
+Hardware specification: 384 threads, 6TB RAM, 40 TB SSD (a training in one day)
+Training data 800k-5M transactions.
+
+As an error measure they use Value Detection Rate.
+
+\section{Microsoft Research by Sebastian Nowozin}
+
+120 researchers at Cambridge (200 total workers). Cambridge focus on Machine
+Learning for healthcare. New lab in Montreal focused on Reinforcement learning
+and Deep Learning.
+
+Why is Artificial Intelligence growing? (1) Massive computation power (GPUs,
+FPGAs, \dots), (2) Powerful algorithms (2012 Alexnet?), (3) Big data.
+
+AI principles
+
+\begin{itemize}
+  \item Fairness: we want the algorithms to avoid systematic biases. It is
+    difficult to remove biases that are already in the datasets.
+  \item Accountability:
+  \item Transparency:
+  \item Ethics:
+\end{itemize}
+
+\begin{mybox}
+  If you know what you are doing, then you are not doing research. (not sure if
+  this was the exact wording) -- Sebastian Nowozin
+\end{mybox}
+
+\subsection{Timelines}
+
+In images, videos and audio: 2000 basic research in audio, skeletal tracking
+and facial recognition, 2010 Kinect, 2011 Kinect Fusion, 2012 HoloDesk, 2015
+HoloLens.
+
+In translation: 1991 basic research in natural language and speech recognition,
+2007 Big bets with product team, 2014 promise of speech recognition with
+translation, 2015 Skype translator launches, 2016 Microsoft translator API and
+personal universal translator launches.
+
+Visual Studio IntelliCode (AI-assisted development)
+
+InnerEye, how can computers understand the segments of medical images.
+Previously, a doctor had to spend around 8 hours segmenting a tumour in several
+images. Now, a program can do the segmentation really fast, and the doctor can
+check the results much faster.
+
+Adaptive, learning to decode the immune system to diagnose disease. From a
+blood sample, immunosequencing extracts some features from t-cells?, a Machine
+learning model can be trained in order to improve the health care service.
+
+\chapter{Generative Adversarial Networks by Sebastian Nowozin}
+
+Fri. Sep 07, 9:30--11:00
+
+\section{Probabilistic models}
+
+Non-probablistic:
+
+\begin{mygraph}
+    \node (x) {$x$};
+    \node[main node] (f) [right = 1.3 of x]  {$f$};
+    \node (y) [right = 1.3 of f]  {$y$};
+
+    \path[->, thick]
+    (x) edge node {} (f)
+    (f) edge node {} (y);
+\end{mygraph}
+
+Probabilistic Generative:
+
+\begin{mygraph}
+    \node (e) {$\epsilon$};
+    \node[main node] (f) [right = 1.3 of e]  {$f$};
+    \node (y) [right = 1.3 of f]  {$y$};
+
+    \path[->, thick]
+    (e) edge node {} (f)
+    (f) edge node {} (y);
+\end{mygraph}
+
+Probabilistic discriminative (Conditionally Generative):
+
+\begin{mygraph}
+    \node (x) {$x$};
+    \node (e) [below = 0.5 of x]{$\epsilon$};
+    \node[main node] (f) [below right = 0.01 and 1.3 of x]  {$f$};
+    \node (y) [right = 1.3 of f]  {$y$};
+
+    \path[->, thick]
+    (x) edge node {} (f)
+    (e) edge node {} (f)
+    (f) edge node {} (y);
+\end{mygraph}
+
+\section{Example applications of GANs}
+
+TODO: check the following graph
+
+\begin{mygraph}
+  \node[rectangle, draw] (1) {Generator $P_\theta$};
+  \node[rectangle, draw] (2) [below = 0.5 of 1]{Discriminator $\epsilon$};
+  \node[rectangle, draw] (3) [below right = 0.01 and 1.3 of 1]  {$f$};
+
+    \path[->, thick]
+    (1) edge node {} (3)
+    (2) edge node {} (3);
+\end{mygraph}
+
+Examples of the evolution on the generation of human faces from 2014 to 2018:
+Goodfellow et al 2014 \cite{goodfellow2014generative}, Radford et al. 2015
+\cite{radford2015unsupervised}, Roth et al, 2017, Karras et al., 2018
+\cite{karras2017progressive}.
+
+DCGAN architecture to generate the interior of rooms. This architecture is a
+100 hidden representation $z$? that is projected and reshaped into a $4x4x1024$
+layer, then a convolution 1 of $8x8x512$, then stride 2 and kernel $5x5$ and
+convolution 2 of $16x16x256$ then stride 2  (See more about linear
+interpolation in the latent space in Radford et al., 2015
+\cite{radford2015unsupervised}).
+
+Another example from the same publication \cite{radford2015unsupervised} of
+Vector Arithmetics in the hidden vector space. In the example the authors
+compute the mean image of man with glasses, then subtract the mean
+representation of man without glasses and sum the mean representation of woman
+without glasses, with the result of new generated images of woman with glasses.
+
+Another example is the Image Super-Resolution by Ledig et al., CVPR 2017
+\cite{ledig2017photo} in which the authors show a method to give as an imput a
+low resolution image to a GAN and it augments the resolution of the image
+(outperforming previous state-of-the-art methods).
+
+\section{Principles of estimation}
+
+The classic parametric models (eg. fitting a Gaussian) use a density function,
+have a limited expressive power in a limited number of parameters (eg. mean and
+variance), and it is a mature field \dots
+
+One of the best known methods is the Likelihood and Maximum Likelihood
+Estimation (MLE) Fisher 1929 \cite{fisher1929tests}?.
+
+An example to maximize the likelihood of data given that the model is a
+Gaussian. If we assume that every point is independent, we want the probability
+of all the points being maximized.
+
+\begin{equation}
+  L(\theta) = \prod_i p(x_i|\theta)
+\end{equation}
+
+\begin{align}
+  \log L(\theta) = \log \prod_i p(x_i|\theta) \\
+  \log L(\theta) = \sum_i \log p(x_i|\theta)
+\end{align}
+
+\subsection{Implicit models}
+
+Three important publications from 1990 till now \dots
+
+\begin{itemize}
+  \item Problem 1: Non-invertible Map. Nothing guarantees that the generative
+    mapping is invertible.
+  \item Problem 2: Lack of Density. We are mapping a low dimentional space
+    $\mu$ to a high dimensional space $p$ with a continuous function. This
+    means that in the output space $p$ all the density is in a small manifold,
+    thus having points where $p(x)$ is not defined a.e.
+  \item Problem 3: Misspecification: (see White 1994, Estimation, Inference,
+      and specification analysis \cite{white1996estimation}. The follwing is an
+      elementary example:
+      \begin{itemize}
+        \item We know that a coin is biased.
+        \item Prior: we have a uniform $p(a) = p(b) = 1/2$ (heads and tails)
+        \item Shows that the posterior under a fair coin with number of draws
+          $k \in \{1,\dots,60\}$ keeps oscillating towards $a$ and  $b$
+          ocasioinally being int plateaous.
+      \end{itemize}
+\end{itemize}
+
+\section{GAN models}
+
+A list of all the named GANs
+\href{https://github.com/hindupuravinash/the-gan-zoo}{The GAN Zoo}
+
+A division of GANs space
+
+\begin{itemize}
+  \item Not defined in the dimensionally misspecified case: KL, f-GAN, JS-GAN
+  \item Defined in the dimensionally misspecified case: Generalized f-GAN,
+    IPMs, Wasserstein MMD, $\mu$-fisher\dots
+\end{itemize}
+
+\subsection{Divergences and f-GAN family}
+
+We want to optimize Saddle Point objectives.
+
+\begin{itemize}
+  \item Practical difficulty: non monotonic objective
+  \item Theoretical didfficulties: which algorithm to use?
+\end{itemize}
+
+
+See more in Nowozin, Cseke, Tomioka NIPS f-GAN 2014 \cite{nowozin2016f}
+
+Explanation of f-divergences
+
+\begin{itemize}
+  \item Divergence between two probability densities (See Csiszar and Shields,
+    2004, and Liese and Vajda, IEEE Inf Th, 2006)
+  \item Scalar ``generation function''
+  \item Assumptions: Both distributions have a density function wrt Lebesgue
+    measure
+\end{itemize}
+
+See how to estimate $f$-divergences form samples in Nguyen, Wainwright, Jordan,
+2010 \cite{nguyen2010estimating}. Here is the resulting lowerbound
+
+\begin{equation}
+  D_f(P||Q) \ge \text{sup}_{T \in \mathcal{T}}( \Expected_{X\from P}[T(x)] - \Expected_{X\from Q}[f^*(T(x))])
+\end{equation}
+
+Where the first expectation is approximated using samples from $P$ and the
+second with samples from $Q$.
+
+Then we can compare the objective of a GAN
+
+\begin{equation}
+  \min_\theta \max_w ( \Expected_{X\from P_\theta}[\log D_w(x)] + \Expected_{X\from
+  Q}[\log (1-D_w(x))])
+\end{equation}
+
+with the objective of the $f$-GAN
+
+\begin{equation}
+  \min_\theta \max_w ( \Expected_{X\from P_\theta}[T_w(x)] - \Expected_{X\from
+  Q}[f^*(T_w(x))])
+\end{equation}
+
+Key properties
+
+\begin{itemize}
+  \item Invariance to coordinate transformations
+  \item Come in pairs:
+    \begin{align}
+      D_f(P||Q) = D_g(Q||P) \\
+      g(u) = uf(1/u)
+    \end{align}
+\end{itemize}
+
+\subsection{IPM}
+
+\begin{itemize}
+  \item $F$ class of real-valued bounded measurable functions
+  \item $P$, $Q$ probability measures
+    \begin{equation}
+      Y_F(P,Q) = \sup_{f \in F} \left| \int fdP - \int fdQ \right|
+    \end{equation}
+  Choice of $F$ determines the metric
+\item See more in Sriperumbudur et al., 2009 and Sriperumbudur et al., 2012.
+\end{itemize}
+
+\subsection{IPM family: MMD}
+
+
+\subsubsection{Reproducing Kernel Hilbert Space (RKHS) Norm}
+
+See Gretton et al., ``A kernel two-sample test'' JMLR 2012
+\cite{gretton2012kernel}
+
+
+\begin{equation}
+  Y_F(P,Q) = \sup_{f \in F} \left| \int fdP - \int fdQ \right| = || \mu_P -
+  \mu_Q ||_H
+\end{equation}
+
+\subsubsection{Kernel MMD traning in deep learning}
+
+See more in
+
+\begin{itemize}
+  \item Deep generative models Li et al., 2015 \cite{li2015generative}, and
+    Dziugaite et al., 2015 \cite{dziugaite2015training}.
+  \item Deep discriminative models ``Disco net'' Bouchacourt et al., NIPS 2016
+    \cite{bouchacourt2016disco}
+  \item use for model criticism Sutherland et al., ICLR 2017 \cite{sutherland2017soumyajit}
+  \item more discriminative kernel functions Li et al., NIPS 2017
+    \cite{li2017mmd}
+\end{itemize}
+
+
+\subsection{IPM family: Wasserstein GANs}
+
+In computer vision look for earth movers distance
+
+\begin{equation}
+  W(P,Q) = \inf_{U\in \prod (P,Q)} \Expected_{(x,y) \from U} [||x-y||]
+\end{equation}
+
+Kantorovich-Rubinstein Duality, the previous equation is the same as
+
+\begin{equation}
+W(P,Q) = \sup_{||f||_{L \le 1}} \Expected_{X \from P}[f(x)] -
+\Expected_{X\from Q} [f(x)]
+\end{equation}
+
+See more in Arjovsky et al., WGAN. In which instead of having the constrain
+$||f||_{L \le 1}$ it is constraiend by a constant $||f||_{L \le k}$. It guarantees the
+$K$-Lipschitz bounded functions.
+
+However, it required the choice of a cliping value (eg. $[-0.01, 0.01]$), and
+leads to non-uniform bounding of gradients
+
+, and Gulrajani et al., NIPS 2017 WGAN-GP. In which they approximate the
+Lipschitz condition with a soft-penalty
+
+\begin{equation}
+  \tilde{W}(P,Q) = \Expected_{X \from P}[f(x)] - \Expected_{X\from Q} [f(x)] +
+  \lambda \Expected_{X \from M(P,Q)} [(||\nabla_X f(x) ||_2 -1)^2]
+\end{equation}
+
+\section{Problems and Fixes: Mode Collapse, Instability}
+
+Empirically observed behaviour hwere model produces only a few distinct
+samples. In order to solve the GAN model collapse and stability issues
+
+From a
+
+\begin{itemize}
+  \item Divergence viewpoint: Arjovsky and Bottou, 2016, Sonderby et al., 2016,
+    Roth et al., 2017, Mescheder et al., 2018.
+  \item Algorithmic viewpoint: Mescheder et al, [2017,2018]
+\end{itemize}
+
+See Unstable training behaviour by Roth et al., 2017 in which they add a
+regularization
+
+\begin{align}
+  \min_\theta \max_w ( \Expected_{X\from P_\theta}[T_w(x)]
+    -& \Expected_{X\from Q}[f^*(T_w(x))]) \\
+  -& \frac{\gamma}{2} \Expected_{X\from Q}[ f^*"(T_w(X)) || \nabla T_w(x)||^2]
+\end{align}
+
+TODO: solve problem with $f^{*''}$
+
+Simple gradient penalties
+
+\begin{align}
+  \min_\theta \max_w ( \Expected_{X\from P_\theta}[T_w(x)]
+    -& \Expected_{X\from Q}[f^*(T_w(x))])  \\
+    -& \frac{\gamma}{2} \Expected_{X\from Q}[|| \nabla T_w(x)||^2] \\
+    -& \frac{\gamma}{2} \Expected_{X\from P_\theta}[|| \nabla T_w(x)||^2]
+\end{align}
+
+\subsection{Spectral Normalization}
+
+See Miyato et al., ICLR 2018 \cite{miyato2018spectral}
+
+Main idea is
+
+\begin{itemize}
+  \item Limit discriminator function class to functions with bounded Lipschitz
+    norm
+  \item Bound global Lipschitz norm by product of Lipschitz norm per layer
+  \item Compute Lipschitz norm per layer efficiently using power method
+\end{itemize}
+
+\section{Implicit models more generally}
+\section{Open research problems}
+
+\begin{itemize}
+  \item Quantitative Evaluation Metrics
+    \begin{itemize}
+      \item Torunament as evaluation? Roth et al., NIPS 2017 \cite{roth2017stabilizing}
+    \end{itemize}
+  \item GANS for discrete data
+  \item Estimation Uncertainty
+    \begin{itemize}
+      \item GANs do not have a likelihood nor a well-defined posterior
+      \item Early attemps, ``Bayesian GAN'' by Saatchi and Wilso, NIPS 2017
+        \cite{saatci2017bayesian}
+    \end{itemize}
+  \item Practical bounds on $||f||_L$
+  \item New Divergences
+    \begin{itemize}
+      \item $\mu$-Fisher IPM Mroueh and Sercu, 2017
+      \item $\mu$-Sobolev IPM Mroueh et al., 2017 \cite{mroueh2017sobolev}
+    \end{itemize}
+  \item Theory about Generalization
+    \begin{itemize}
+      \item Generalization bounds
+      \item empirical study using ``birthday paradox test''
+      \item Study of neural network distance (generalization) versus study of
+        divergences
+    \end{itemize}
+\end{itemize}
+
+\end{document}

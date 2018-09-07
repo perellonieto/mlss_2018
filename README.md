@@ -20,6 +20,8 @@
 - **Bayesian Optimization and Probabilistic Numerics** by Michael Osborne [slides1](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne1.pdf)
 ,[slides2](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne2.pdf)
 ,[slides3](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne3.pdf)
+- **Generative Adversarial Networks** by Sebastian Nowozin
+  [slides1](slides/sebastian_nowozin_gans/gans.pdf)
 
 
 ## Schedule
