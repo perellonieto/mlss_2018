@@ -1,0 +1,212 @@
+\chapter{An introduction to Bayesian nonparametrics by
+\href{http://sinead.github.io/}{Sinead Williamson}}
+
+\section{The Dirichlet process}
+
+\subsection{An urn representation}
+
+\begin{itemize}
+  \item Conditioned on $\phi$ \dots
+\end{itemize}
+
+\begin{align}
+  p(z_i = k| z_{i:i-1} =& \int p(z_i = k| \pi) p(\pi|z_{1:i-1} d\pi \\
+      =& \frac{\sum_{j=1}{i-1} \Indicator(z_j = k) + \alpha_k}{i - 1 + \sum_k
+      \alpha_k}
+\end{align}
+
+\subsection{Exchangeability}
+
+\begin{itemize}
+  \item Changing the order of the observation does not change the probabilities:
+    $p(r,g,g,r,b,r) = p(r,r,r,g,g,b)$
+  \item This allows us to threat every data point as if it were the las one
+    that we piked out
+\end{itemize}
+
+\subsection{Choosing the number of clusters}
+
+\begin{itemize}
+  \item The Dirichlet distribution is a great choice when there is a clear,
+    fixed number of clusters\dots but sometimes that is not the case
+  \item The finite mixture model had $K$ mixture components:
+    \begin{equation}
+      p(x_n|\pi, \{u_k\}, \{\Sigma_k\}) = \sum_{k=1}^K \pi_k \Normal(x_n|\mu_k,
+      \sigma_k)
+    \end{equation}
+  \item To make sure we never run out of clusters, no matter how many data
+    points we see, we need (countably) infinite clusters
+    \begin{equation}
+      p(x_n|\pi, \{u_k\}, \{\Sigma_k\}) = \sum_{k=1}^\infty \pi_k \Normal(x_n|\mu_k,
+      \sigma_k)
+    \end{equation}
+\end{itemize}
+
+\subsection{Constructing an appropriate prior}
+
+\begin{itemize}
+  \item Start off with w elements
+    \begin{equation}
+      \pi^{(2)} = (\pi_1^{(2)}, \pi_2^{(2)}) \from \text{Dirichlet}(\alpha/2,
+      \alpha/2)
+    \end{equation}
+  \item Split each component according to our beta
+    \begin{align}
+      \pi^{(4)} = \dots \from \text{Dirichlet}(\alpha/4,
+      \alpha/4,\alpha/4,\alpha/4)
+    \end{align}
+  \item Keep until infinity?
+    \begin{align}
+      \pi^{(K)} = \dots \from \text{Dirichlet}(\alpha/K,\dots,\alpha/K)
+    \end{align}
+\end{itemize}
+
+See Ferguson 1973 \cite{ferguson1973bayesian}
+
+\section{Dirichlet process and Dirichlet marginals}
+
+\subsection{Conjugacy of the multinomial}
+
+\begin{itemize}
+  \item We saw that dirichlet distribution was a conjugate prior of the
+    multinomial.
+  \item This is also true for the Dirichlet process
+  \item Pick a partition $A_1,\dots,A_k$ \dots
+\end{itemize}
+
+\subsection{The Chinese restaurant process}
+
+\begin{itemize}
+  \item We can describe a sample from a DP-distributed probability distribution
+    in terms of the following restaurant metaphor
+  \item Restaurant with infinitely many tables (serving different dish)
+  \item The first person sits in the first empty table
+  \item Second person sits at the first table with probability $1/(1+\alpha)$ or
+    at a new table with $1/(1+\alpha)$.
+  \item let $m_k$ be the number of people sat at the $k$th table. The $n$th
+    customer sits at the $k$th table with probability. missing from here $m_k/(1 + \alpha)$
+
+\end{itemize}
+
+\subsection{The stick breaking construction}
+
+See Sethuraman 1994 \cite{sethuraman1994constructive}.
+
+Imagine a stick of unit lenght representing the total probability
+
+\begin{enumerate}
+  \item Sample a $Beta(1, \alpha)$ random variable $b_k$
+  \item Break a fraction $b_k$ of the stick. This is the first atom.
+  \item Sample a random location for this atom
+  \item recurse on the remaining stick to get
+  \item Repeat from $k = 1,2,\dots$
+\end{enumerate}
+
+\subsection{Indian Buffet Process}
+
+\begin{enumerate}
+  \item A customer enters a restaurant with an infinite number of dishes
+  \item \dots
+\end{enumerate}
+
+\subsection{Bulding latent feature models using the IBP}
+
+The number of latent features (apple, skull, thread, hat,\dots) can use a
+Indian Buffet Process (IBP).
+
+\begin{itemize}
+  \item Unbounded number of latent features
+  \item Each column of the IBP corresponds to one of an infinite number of
+    features
+  item Weach row of the IB<P selects a finite subset of these features
+  \item The rich-get-richer property of the IBP ensures features are shared
+  between data points
+  \item We must pick a likelihood model that determines what the features look
+    like and how they are combined
+\end{itemize}
+
+In order to do inference in the IBP
+
+\begin{align}
+  Z \from IBP(\alpha) \\
+  A_k \from \Normal(0, \theta_A^2 \Identity) \\
+  x_n \from \Normal(z_nA^T, \sigma_X^2\Identity)
+\end{align}
+
+\subsection{Summary}
+
+\begin{itemize}
+  \item The Dirichlet process is an infinite-dimensional analoge of the
+    Dirichlet distribution
+  \item we use the Dirichlet distribution for clustering data into $K$ clusters
+  item similarly, we can use the Dirichlet process to cluster data into an
+  unbounded (and growing) number of clusters
+\item the indian buffet process is an infinite-dimensional model fro feature
+  subset selection
+\item we can use it to construct latent feature models with infinitely many
+  features
+\item we can customize the latent feature model to match our data
+\item many more building blocks --gamma process, poisson process, pitman-yor
+  process, kingman's coalescent
+\item Next, we will take a look at some hierarchical models that use the DP and
+  IBP as building blocks
+\end{itemize}
+
+
+\subsection{Latent Dirichlet allocation}
+
+Dirichlet distributions are commonly used in topic models. These models
+describe documents using a distribution over the ``topics'', where each topic
+is a distribution over words (see Latent Dirichlet Allocation by Blei et al.
+2003 \cite{blei2003latent})
+
+\begin{enumerate}
+  \item For each topic $k = 1, \dots, K$ sample a distribution over the words
+    $\beta_k \from \text{Dirichlet}(\eta_1, \dots, \eta_V)$
+\end{enumerate}
+
+\subsection{Hierarchical Dirichlet process}
+
+\begin{align}
+  G_0 \from DP(\gamma, H) \\
+  G_m \from DP(\alpha, G_0)
+\end{align}
+
+With small values of $\alpha$ the topics will be differnt, however with large
+$\alpha$ all the models will be the same.
+
+\subsection{The Chinese restaurant franchise}
+
+\begin{enumerate}
+  \item First restaurant (document)
+    \item Customers pick tables acording to a Chines restaurant process with
+      parameter $\alpha$
+    \item Each table asks their waiter to pick a dish
+    \item The waiter considers all the dishes that have been served previously
+      in the franchise
+\begin{itemize}
+  \item Since it is the first restaurant the first table gets a new dish
+  \item Second table gets the previous dish with probability $1/(1+\gamma)$ or
+    a new otherwise
+    \item Keep going like the previous example of a Chinese restaurant
+\end{itemize}
+  \item The second restaurant
+  \item The costumers pick tables according to a Chinese restaurant process
+    with parameter $\alpha$ (from all the possible tables seen in all the
+    franchises)
+  \item \dots
+\end{enumerate}
+
+\subsection{Basic network models: Erdös-Renyi models}
+
+\section{Further resources}
+
+\begin{itemize}
+  \item A tutorial on bayesian nonparametric models, S.j. gershman and D.M.
+    Beli
+  \item The introduction of Erik Sudderth's PhD thesis
+  \item Markov chain sampling methods for Dirichlet process mixture models, RM
+    Neal, Journal of computational and graphical statistics, 2000
+  \item Python: bnpy-dev, PyIBP
+  \item Julia: BNP.jl
+\end{itemize}

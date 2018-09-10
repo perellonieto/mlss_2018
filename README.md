@@ -1,11 +1,27 @@
 # Machine Learning Summer School 2018
 
-This is my own summary notes ([pdf](main.pdf)) of the [MLSS 2018 held at Universidad Autónoma de
+This are my own summary notes of the [MLSS 2018 held at Universidad Autónoma de
 Madrid](http://mlss.ii.uam.es/mlss2018/index.html), Spain from Aug. 27 to Sep.
 7, 2018.
 
+## Revised notes
+
+- I do not have currently any clean notes. If I have time, I will try to clean some of
+the sections and make sure that they do not include wrong information.
+
+## Draft notes
+
+- [My draft notes in pdf](main.pdf): These notes may contain wrong information,
+  and should be used only as a reference for further research. The table of
+contents may be useful to have a brief idea about the full content of the
+Summer School.
 
 ## Available material
+
+The list of speakers and the available material can be found at [speakers](http://mlss.ii.uam.es/mlss2018/speakers.html)
+
+The following list contains a copy of the slides downloaded from the
+aforementioned web site.
 
 - **Optimization** by Francis Bach [slides](slides/francis_bach_optimization/bach.pdf)
 - **Causal Inference** by Joris Mooij

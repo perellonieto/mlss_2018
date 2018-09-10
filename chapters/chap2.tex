@@ -1,0 +1,526 @@
+\chapter{Bayesian Deep Learning: Planting the seeds of probabilistic thinking
+by \href{https://shakirm.com/}{Shakir Mohamed}}
+
+- Shakir Mohamed
+- Cambridge, CIFAR, DeepMind
+
+\section{Introduction 27 Aug. Mon. 9:30--11:00}
+
+\begin{itemize}
+  \item Different views of probability
+    \begin{itemize}
+      \item Statistical probability: frequency ratio of items
+      \item Logical Probability: Degree of confirmation of an hypothesis
+          based on logical analysis
+      \item Probability as Propensity: probability used for predictions
+      \item Subjective probability: probability as a degree of belief
+        \begin{itemize}
+          \item Probability is a measure of a belief in a proposition given
+            evidence. A description of a state of knowledge.
+          \item Different observers with different information will have
+            different beliefs
+        \end{itemize}
+    \end{itemize}
+  \item $p(x)$ probability of $x$, $p^*(x)$ true probability of $x$
+  \item Conditions: $p(x) \ge 0$, $\int p(x) dx = 1$
+  \item Bayes rule: $p(z|x) = \frac{p(x|z)p(z>)}{p(x)}$
+  \item Parametrisation: $p_\theta(x|z) = p(x|z; \theta)$
+  %\item Expectation: $E_{p \theta}(x\z)[f(x;\phi)] = \int p_\theta(x|z)f(x;\phi)dx$
+  \item Gradient: missed
+\end{itemize}
+
+\begin{itemize}
+  \item Generalised Linear Regression
+\end{itemize}
+
+\begin{equation}
+  \mu = w^T x + b
+\end{equation}
+
+\begin{itemize}
+  \item Recursive Generalised Linear Regression
+  \item Recursively copose the basic linear functions
+  \item Gives a deep neural network
+\end{itemize}
+
+\begin{itemize}
+  \item Probabilistic model
+  \item $p(y|x) = p(y|h(x); \theta)$
+  \item likelihood function (log of the previous one)
+  \item $\mathcal{L}(\theta) = \sum_n \log p(y_n|x_n; \theta)$
+  \item Sometimes the likelihood is not computationally tractable because of an
+    integral
+  \item Likelihoods can give you estimates of parameters
+  \item They are efficient estimators, are asymptotically unbiased
+  \item It is possible to make statistical tests on the likelihood, this can
+    give you confidence intervals
+  \item Pool information: combine the outcomes of different data sources
+  \item Biggest problem: misspecification, inefficient estiamtes or confidence
+    intervals/test can fail completly (assuming Gaussian while data is not)
+\end{itemize}
+
+A likelihood function with regularization term
+
+\begin{equation}
+  \Likelihood(\theta) = \sum_n \log p(y_n|x_n; \theta) + \frac{1}{\lambda}
+\mathcal{R}(\theta)
+\end{equation}
+
+Other names for the regularization are \ldots
+
+The Maximum a Posteriory estimation (MAP)
+
+Shows an example of two instantiations for a MAP estimate where the answer
+changes from 0 to 1. This problem arises because of the variable scale. In
+order to solve that, we need to learn more than just the mean.
+
+In Bayesian analysis there are two core components: the evidence
+
+\begin{equation}
+  p(y|x) = \int p(y|h(x); \theta)p(\theta)d\theta
+\end{equation}
+
+and the posterior
+
+\begin{equation}
+  p(\theta | y,x) \propto p(y|h(x); \theta)p(\theta)
+\end{equation}
+
+In Bayesian analysis, all the things that are not obseved need to be integrated
+over (averaged out)
+
+\textbf{Intractable Integrals} do not have a closed form, or very
+high-dimensional quantities that can't be computed (e.g. using quadrature)
+
+\subsection{Learning and inference}
+
+In statistics there is no distinction between learning and inference, only
+inference (or estimation). While in Bayesian statistics, all quantities are
+probability distributions, so there is only the problem of inference.
+
+\textbf{TODO Look at this with more detail}
+
+\begin{itemize}
+  \item Deep Learning
+    \begin{itemize}
+      \item Rich non-linear
+      \item Scalable learning
+      \item Easily composable
+      \item negative point
+      \item negative point
+    \end{itemize}
+  \item Bayesian Reasoning
+    \begin{itemize}
+      \item negative point: Rich non-linear
+      \item negative point: Scalable learning
+      \item negative point: Easily composable
+      \item positive point
+      \item positive point
+    \end{itemize}
+\end{itemize}
+
+Some additional examples of Bayesian reasoning combined with Deep learning are
+Density Estimation, Decision Making and Reinforcement Learning.
+
+Deep and Hierarchical models can be decomposed into a sequence of conditional
+distributions in the form
+
+\begin{equation}
+  p(z) = p(z_1|z_2)p(z_2|z_3) \dots p(Z_{L-1}|z_L)p(z_L)
+\end{equation}
+
+A list of different models
+
+\begin{itemize}
+  \item Directed vs undirected
+  \item observed vs unobserverd variables
+  \item parametreic vs non-parametric
+\end{itemize}
+
+A list of learning principles (Statistical inference)
+
+\begin{itemize}
+  \item Direct
+    \begin{itemize}
+      \item Laplace approximation
+      \item Maximum likelihood
+      \item maximum a posteriori
+      \item variational inference
+      \item cavity methods
+      \item integr. nested laplace approximation
+      \item expectation maximisation
+      \item markov chain monte carlo
+      \item noise contrastive
+      \item sequential monte carlo
+    \end{itemize}
+  \item Indirect (missing these ones)
+\end{itemize}
+
+Question about calibrated probabilities. In general in classification it is not
+but in healthcare is an example of aplication where this is important.
+
+\section{Inferential questions: Mon. 11:30--13:00}
+
+Evidence estimation
+
+\begin{equation}
+  p(x) = \int p(x,z)dz
+\end{equation}
+
+Moment computation
+
+\begin{equation}
+  \Expectation [f(x) | x] = \int f(z)p(z|x) d z
+\end{equation}
+
+Identity trick to compute unobserved variables?
+
+Integral problem
+
+\begin{equation}
+  p(x) = \int p(x|z)p(z)dz
+\end{equation}
+
+Probabilistic one
+
+\begin{equation}
+  p(x) = \int p(x|z)p(z)\frac{q(z)}{q(z)}dz
+\end{equation}
+
+
+Importance sampling: Monte carlo estimator
+
+\begin{equation}
+  p(x) = \frac{1}{S} \sum_s w^{(s)} p(x|z^{(s)})
+\end{equation}
+
+\begin{equation}
+  w^{(s)} = \frac{p(z)}{q(z)} \dots
+\end{equation}
+
+\subsection{Hutchinson's Trick}
+
+Example with computing the trace of a matrix, KL between two gaussians,
+gradient of a log-determinant
+
+The trace problem $Tr(A)$ with zero mean unit variance $\Expected[zz^T] = I$.
+Applying the identity trick we obtain
+
+\begin{equation}
+Tr(AI) = Tr(A \Expected[zz^T])
+\end{equation}
+
+With linear operations allow us to obtain
+
+\begin{equation}
+\Expected[Tr(Azz^T)]
+\end{equation}
+
+And because of the trace property
+
+\begin{equation}
+\Expected[z^T Az].
+\end{equation}
+
+Then, with montecarlo methods the expected value is converted into a sumation
+
+\subsection{Probability Flow Tricks}
+
+Given a distribution and sample
+
+
+\begin{equation}
+  \hat{x} \from p(x)
+\end{equation}
+
+With a transformation
+
+\begin{equation}
+  \hat{y} = g(\hat{x};\theta)
+\end{equation}
+
+Change of variables
+
+\begin{equation}
+  p(y) = p(x) \left| \frac{dg}{dx}\right|^{-1}
+\end{equation}
+
+Example: compute the
+
+\begin{equation}
+  \log \det \left( \frac{\partial f(z)}{\partial z}\right)
+\end{equation}
+
+This method is seen in the literature as \emph{Normalising Flows} (see more in
+the \href{http://akosiorek.github.io/ml/2018/04/03/norm_flows.html}{blogpost})
+
+\subsection{Stochastic Optimization}
+
+Compute the gradient of the common problem
+
+\begin{equation}
+  \nabla_\phi \Expected_{q_\phi(z)} [f_\phi (z)] = \nabla_\phi \int q_\phi (z) f_\phi(z) dz
+\end{equation}
+
+With some reparametrisation tricks a distribution can be expressed as a
+transofmration of other distributions
+
+\begin{equation}
+  z \from q_\phi(z)
+\end{equation}
+
+Other names for these methods are samples, one-liners and change-of-variables
+
+\subsection{Pathwise Estimator}
+
+Also known as Unconscious statistician, stochastic backpropagation,
+perturbation analysis, reparametrisation trick, affine-independent inference.
+
+When to use this trick
+
+\begin{itemize}
+  \item Function $f$ is differen
+  \item Density $q$ is known with a suitable transorm of a simpler base
+      distribution: inverse CDF, location-scale transform, or other co-ordinate
+      transform
+  \item Easy to sample from base distribution
+\end{itemize}
+
+\subsection{Log-derivative trick}
+
+Score function is the derivative of a log-likelihood function
+
+\begin{equation}
+  \Gradient_\phi \log q_\phi(z) =
+\end{equation}
+
+\subsection{Score-function estimator}
+
+Also known as Likelihood ratio method, reinforce and policy gradients,
+automated and black-box inference
+
+We should use this method when
+
+\begin{itemize}
+  \item Function is not differentiable, not analytical
+  \item Distribution $q$ is easy to sample from
+  \item Density $q$ is known and differentiable
+\end{itemize}
+
+\subsection{Evidence Bounds}
+
+Integral problem
+
+\begin{equation}
+  p(x) = \int p(x|z)p(z) dz
+\end{equation}
+
+Proposal
+
+\begin{equation}
+  p(x) = \int p(x|z)p(z) \frac{q(z)}{q(z)} dz
+\end{equation}
+
+Importance weight
+
+Jensen's inequality
+
+Lower bound: evidence ower bound
+
+\begin{equation}
+  \Expected_{q(z)} [\log p(x|z)] - KL[q(z) || p(z)]
+\end{equation}
+
+\subsection{Density Ratio Trick}
+
+The ratio of two densities can be computed using a classifier of using samples
+drawn from the two distributions. (TODO there is a type here, find out why)
+
+\begin{equation}
+  \frac{p^*(x)}{q(x)} = \frac{p(y=1|x)}{p(y=-1|x)}
+\end{equation}
+
+\section{Unsupervised Learning Thu. 9:30--11:00}
+
+\begin{itemize}
+  \item Move beyond of associating inputs to outputs
+  \item Generative models
+  \item It allows to perform density estimation
+    \begin{itemize}
+      \item Probabilistic models
+      \item High-dimensional data
+      \item Data distribution is targeted
+    \end{itemize}
+\end{itemize}
+
+
+Some examples of aplications for generative models is the compression of images
+with high resolution GANs. Some artists used GANs to create pieces of video
+art. In an example the artist makes a video of a piece of cloth and gives the
+video as an input to a GAN that is trained with a particular set of images (eg.
+waves on the sea, or fire), then the GAN needs to generate new images that
+resemble the training data.
+
+Types of generative models are:
+
+\begin{itemize}
+  \item Fully-observed models
+  \item Latent variable models (where there is a direction (from z to x?)
+  \item Undirected models: where there is no known direction from the
+    observed variables X to the hidden variables Z
+  \item \href{Sum-product networks}{https://arxiv.org/abs/1202.3732}
+\end{itemize}
+
+Some points to consider when designing a generative model
+
+\begin{itemize}
+  \item Data: binary, real-valued, nominal, strings, images
+  \item Dependency: independent, sequential, temporal, spatial
+  \item Representation: continuous or discrete
+  \item Dimension: parametric or non-parametric
+  \item Computational complexity
+  \item Modelling capacity
+  \item Bias, uncertainty, calibration
+  \item Interpretability
+\end{itemize}
+
+\subsection{Fully-observed models}
+
+This are models that operate on the observed data directly. It does not assume
+any hidden variables that may interact with our observed variables. As an
+example, Markov models assume a dependency with past events, depending on the
+number of dependencies with past events it has different orders of dependency.
+
+\begin{align}
+  x_1 \from \text{Cat}(x_1|\pi) \\
+  x_2 \from \text{Cat}(x_2|\pi(x_1)) \\
+  \dots \\
+  x_i \from \text{Cat}(x_i|\pi(x_{< n})) \\
+  p(x) = \prod_i p(x_i|f(x_{< i}; \theta))
+\end{align}
+
+Some of the properties of these models are
+
+\begin{itemize}
+  \item Can directly encode how observed points are related
+  \item Any type of data can be used
+  \item \dots
+\end{itemize}
+
+Directed and discrete: NADE, EoNADE\dots
+Directed and continuous: Normal means\dots
+Undirected and discrete:\dots
+Undirected and continuous:\dots
+
+\subsection{Latent variable models}
+
+These models introduce unobserved local random variables that represent a
+hidden cause. One of the most common assumptions is to assume some random
+hidden noise in the called Prescribed models. On the other hand, \dots.
+
+An example of a prescribed model is a Deep Latent Gaussian Models in wich all
+the hidden variables follow a Gaussian distribution that are connected one to
+each other and with dependencies to
+previous variables.
+
+\begin{align}
+  z_3 \from \Normal(0, \Identity) \\
+  z_2 \from \Normal(\text{some dependency on}z_3) \\
+  z_1 \from \Normal(\text{some dependency on}z_3 \text{and} z_2) \\
+  \dots \\
+  x_1 \from \Normal(\text{some dependency on}z_{i})
+\end{align}
+
+Some of the properties of Latent variable models are
+
+\begin{itemize}
+  \item \dots
+\end{itemize}
+
+Some dimensions in order to separate different latent models are, discrete vs
+continuous, deep vs direct/linear, and parametric vs non-parametric. Some
+examples are Buffet process, Sigmoid Belief Nets, Deep Gaussian processes,
+Hidden Markov Model, Sparse LVMs, Nonlinear factor Analysis.
+
+\subsection{Implicit Models}
+
+These are models that asume a random hidden variable that adds noise to the
+observed variables. One of the most common examples is to assume random
+Gaussian noise in a signal.
+
+TODO the following equations need to be checked:
+
+\begin{align}
+  z \from \Normal(\mu, \sigma^2) \\
+  x \from f(z)
+\end{align}
+
+Some of the important properties are
+
+\begin{itemize}
+  \item Easy to sample
+  \item easy to compute expectations
+  \item Can exploit on large-scale classifiers and Convolutional networks
+        (I think this is the regularisation part?)
+\end{itemize}
+
+We can separate this models mostly on functions discrete time and difffusions
+in continous time.
+
+\section{Model-Inference-Algorithm}
+
+We will understand VAriational Autoencoders and Generative \dots
+
+\section{Variational Inference}
+
+The variational principle is a general family of methods for the approximation
+of a complicated density by a simpler class of densities. In most of the cases
+we can asses the similarity between our approximated distribution and the
+original one by using the Kullback–Leibler divergence.
+
+IN variational inference there is always a variational bound that (Evindence
+Lower Bound, a.k.a. ELBO)
+
+\begin{equation}
+  F(x,q) = \Expected_{q(z)}[\log p(x|z)] - KL[q(z)||p(z)]
+\end{equation}
+
+\section{Mean-Fields}
+
+These methods assume that the distribution is factorised (the hidden variables
+are independent). This means that we can compute their probability by
+multiplying every independent hidden variable probability.
+
+
+The most expresive model with the true posterior would be $q^*(z|x)
+\propto p(x|z)p(z)$ (true posterior), in the least expressive side we have $q_{MF}(z|x) =
+\prod_z q(z_k)$ (fully-factorised model). There is a huge vairety of models in
+between like Hidden Markov models, Autoregresive models, Gaussian processes?
+
+\section{Variational Optimisation}
+
+In the variational Expectation Maximisation consists on an alternating
+optimization for the variational parameters and the model parameters (VEM).
+
+\begin{align}
+  \phi \propto \Gradient_\phi  \text{missing equation}
+\end{align}
+
+In the E-step instead of computing q with every sample of our dataset, we will
+simulate the answer with an Inference network $q(z/x)$ that will give us a
+sample $z \from q(z/x)$. This may be an encoder or inverser. TODO need to see
+this previous paragraph with more detail.
+
+\section{Reinforcement learning as generative models}
+
+\begin{itemize}
+  \item An unknown likelihood
+  \item not known analytical
+  \item something more
+\end{itemize}
+
+
+Applying all the techniques seen in the three lectures it is possible to learn
+a policy learning that can be used in reinforcement learning.
+
+

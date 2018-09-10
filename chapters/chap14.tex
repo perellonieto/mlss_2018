@@ -1,0 +1,127 @@
+\chapter{Machine Learning in the industry}
+%\newrefsection
+
+\section{Real-world ML Challenges at the Scale of Banking by BBVA Data and
+Analytics}
+
+Up to this moment, ML in banking has focused on fraud detection.
+
+Working at the moment on an app for expenses prediction. Hundreds of millions
+of time series.
+
+Classification of transactions, they tested Word2vec with Vector of Locally
+Aggregated Descriptors (VLAD) pooling.
+
+Expense forecasting with LSTM layers and a dense layer on top. Now the expenses
+forecasting is including uncertainty on the predictions (See Uncertainty
+  Modelling in Deep Networks: Forecasting Short and Noisy Series
+\cite{brando2018uncertainty})
+
+How to compare customers (see cleint2vec: Towards systematic baselines for
+banking applications \cite{baldassini2018client2vec})
+
+Recommender systems, modelling users for target advertising.
+
+In order to create a loss functions that considers (See, A Missing Information
+Loss function for implicit feedback datasets \cite{arevalo2018missing} )
+
+Reinforcement Learning for Fair Dynamic Pricing \cite{maestre2018reinforcement}
+
+What is not in the books of Machine Learning when applying methods in the
+industry:
+
+\begin{itemize}
+  \item Fairness
+  \item Privacy
+  \item Ethics
+  \item Business
+  \item Data acquisition/labelling
+  \item UX/UI
+  \item Design
+\end{itemize}
+
+\section{Data Efficient Reinforcement Learning by PROWLER.io}
+
+Based in three teams: Probabilistic team, reinforcement learning team, and multiagent team.
+
+Currne tReinforcement learning technology, successes using deep Q-Networks.
+
+\section{Lynx: real-time accurate fraud detection over massive data.
+Instituto de Ingenieria del conocimento by Álvaro Barbero Jiménez}
+
+There are 8 countries using Lynx, and over 30,000 million transactions
+processed per year.
+
+Their system need to make decision in a few miliseconds.
+
+Device tries to make an operation, this is sent to the institution (bank), the
+institution sends a copy of the operation to Lynx, that will estimate the
+probability of fault in some miliseconds and send the answer back to the
+institution. Then the institution has to choose on what action to take and send
+back the operation success (or deny) to the device.
+
+The decisions are taken with two types of analysis
+
+\begin{enumerate}
+  \item Parametric Analysis
+  \item \dots
+\end{enumerate}
+
+Approach for programming: Use Python, R, elastic and cocker in order to test
+ideas fast, and if the results are good, implement it on C, Bash (see book Data
+science at the command line) or Fortran.
+
+One of the problems of detecting fraud is that the fraudulent transactions
+evolve as they are detected. It is necessary to use Adaptive models and train
+with incremental learning.
+
+Hardware specification: 384 threads, 6TB RAM, 40 TB SSD (a training in one day)
+Training data 800k-5M transactions.
+
+As an error measure they use Value Detection Rate.
+
+\section{Microsoft Research by Sebastian Nowozin}
+
+120 researchers at Cambridge (200 total workers). Cambridge focus on Machine
+Learning for healthcare. New lab in Montreal focused on Reinforcement learning
+and Deep Learning.
+
+Why is Artificial Intelligence growing? (1) Massive computation power (GPUs,
+FPGAs, \dots), (2) Powerful algorithms (2012 Alexnet?), (3) Big data.
+
+AI principles
+
+\begin{itemize}
+  \item Fairness: we want the algorithms to avoid systematic biases. It is
+    difficult to remove biases that are already in the datasets.
+  \item Accountability:
+  \item Transparency:
+  \item Ethics:
+\end{itemize}
+
+\begin{mybox}
+  If you know what you are doing, then you are not doing research. (not sure if
+  this was the exact wording) -- Sebastian Nowozin
+\end{mybox}
+
+\subsection{Timelines}
+
+In images, videos and audio: 2000 basic research in audio, skeletal tracking
+and facial recognition, 2010 Kinect, 2011 Kinect Fusion, 2012 HoloDesk, 2015
+HoloLens.
+
+In translation: 1991 basic research in natural language and speech recognition,
+2007 Big bets with product team, 2014 promise of speech recognition with
+translation, 2015 Skype translator launches, 2016 Microsoft translator API and
+personal universal translator launches.
+
+Visual Studio IntelliCode (AI-assisted development)
+
+InnerEye, how can computers understand the segments of medical images.
+Previously, a doctor had to spend around 8 hours segmenting a tumour in several
+images. Now, a program can do the segmentation really fast, and the doctor can
+check the results much faster.
+
+Adaptive, learning to decode the immune system to diagnose disease. From a
+blood sample, immunosequencing extracts some features from t-cells?, a Machine
+learning model can be trained in order to improve the health care service.

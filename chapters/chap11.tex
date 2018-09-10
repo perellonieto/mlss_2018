@@ -1,0 +1,131 @@
+\chapter{Kernel methods by \href{http://www.gatsby.ucl.ac.uk/~gretton/}{Arthur Gretton}}
+
+ Tue. 11:30--13:00
+
+\begin{itemize}
+  \item Testing goodnes of fit: Given a model $P$ and samples $Q$
+  \item Dependence testing
+\end{itemize}
+
+Maximum mean discrepancy (MMD)
+
+\section{Reproducing Hilbert spaces}
+
+Definition (Inner product)
+
+Let $H$ be a vector space over $\Real$. A function $k(x,x')$ is an inner
+product of $x$.
+
+\begin{theorem}
+  Sums of kernels are kernels: Given $\alpha > 0$ and $k, k_1$ and $k_2$ all
+  kernels on $\chi$, then $\alpha k$ and \dots are kernels.
+\end{theorem}
+
+\begin{theorem}
+  Products of kernels are kernels:
+\end{theorem}
+
+\begin{theorem}
+  Polynomial kernels:
+\end{theorem}
+
+A famous infinite feature space kernel, the exponentiated quadratic kernel
+
+\begin{equation}
+  k(x, x') = \exp\left(-\frac{||x-x'||^2}{2\sigma^2}\right)
+\end{equation}
+
+Smoothness in RKHS with exponentiated quadratic kernel
+
+\begin{equation}
+  f(x) = \sum_{i=1}^m \alpha_i k(x_i, x) = \sum_{t=1}^\infty f_l [\sqrt{\lambda_l}e_l(x)]
+\end{equation}
+
+\section{Interlude: divergence measures}
+
+Integral probability metrics (substraction): wasserstein, MMD, TV
+
+\begin{equation}
+  D_H(P,Q) = \text{sup}_{g \in H} | E_{X \from P}g(X) - E_{Y \from Q}g(Y)|
+\end{equation}
+
+F-divergences: Pearson chi2, Hellinger, KL, TV
+
+\begin{equation}
+  D_f(P,Q) = \int_\chi q(x) f(\frac{p(x)}{q(x)})dx
+\end{equation}
+
+Notice the intersection TV (see \dots)
+
+\section{Two-sample testing with MMD}
+
+
+\begin{itemize}
+  \item Null hypothesis: $H_0$ when $P = Q$ \\
+    should see $\hat{MMD}^2$ close to zero
+  \item Alternative hypotesis $H_1$ when $P \ne Q$ \\
+    should see $\hat{MMD}^2$ far from zero
+\end{itemize}
+
+Set the treshold by shuffling the data from both classes and dividing into two
+sets $P$ and $Q$. Then computing the $\hat{MMD}^2$ of $P$ and $Q$.
+
+\section{Training GANs with MMD Wed. 9:30--11:00}
+
+Generative Adversarial Networks are composed of a student (generator) and a
+teacher (discriminator). The student is learning to generate samples and the
+teacher is assesing if the generated samples are good or not. However, the
+student could memorize one sample and improve this one until the teacher
+asseses that it is always correct.
+
+To improve the critic witness it is possible to add convolutional features to
+be discriminated, and the teacher (critic) also needs to be trained (see MMD
+GAN Li et al, NIPS 2017 \cite{li2017mmd}, Coulomb GAN Unterthiner et al., ICLR
+2018 \cite{unterthiner2017coulomb})
+
+Another idea is WGAN-GP (see Wasserstein GAN by Arjovsky et al. ICML 2017
+\cite{arjovsky2017wasserstein}, WGAN-GP Gukrajani et al. NIPS 2017
+\cite{DBLP:journals/corr/GulrajaniAADC17}).
+
+New MMD GAN witness regulariser  (Arbel, Sutherland, Binkowski, G NIPS 2018),
+based on semi-supervised learning regulariser by Bousquet et al NIPS 2004.
+
+\subsection{The kernel inception distance (KID)}
+
+The kernel inception distance 8by Binkowski, sutherland, arbel G ICLR 2018)
+measures the similarity of the samples' representations in the inception
+architecture (pool3 layer) MMD with kernel
+
+\begin{equation}
+  k(x,y) = (\frac{1}{d}x^Ty+1)^3
+\end{equation}
+
+Checks match for feature means, variances and skewness. It is unbiased?.
+
+\section{Testing statistical dependence}
+
+Example with captions of images of cats and dogs. First we obtain a good kernel
+to compare images $k(x, x')$, and a good kernel to compare text $l(x, x')$.
+
+\begin{itemize}
+  \item Given: samples from a distribution $P_{XY}$
+  \item Goal: are $X$ and $Y$ independent?
+    \begin{equation}
+      MMD^2(\hat{P}_{XY}, \hat{P}_X, \hat{P}_Y, H_k) =
+      \frac{1}{n^2}\text{trace}(KL)
+    \end{equation}
+\end{itemize}
+
+\subsection{Finding covariance with smooth transformations}
+
+Illustration with a variable $X$ and $Y$ with a shape of a circle perimeter
+with some gaussian noise. In this case the correlation between variables is 0,
+but with certain witness functions for $w_x(X)$ and $w_y(Y)$ we can find a
+correlation between them.
+
+\subsection{Application: dependence detection across languages}
+
+\begin{itemize}
+  \item Testing task: detect dependence between English and French text
+  \item k-spectrum kernel, $k=10$
+\end{itemize}

@@ -1,0 +1,214 @@
+\chapter{Causality by \href{https://staff.fnwi.uva.nl/j.m.mooij/}{Joris Mooij}}
+
+There are many questions in science that are casual (eg. climatology,
+healthcare, \dots).
+
+\section{Introduction}
+
+
+Causation is not correlation (gives example with chocolate consumption being
+correlated with number of nobel prizes in different countries, while there is
+no actual correlation between both).
+
+In order to represent causal relations we can use \emph{causal graphs}
+(directed graphs) in wich nodes are variables $X_n$ from (a vocabulary?) $V$.
+While directed edges indicate that the first variable causes direclty another
+variable respect to $V$. An example of a cyclic graph where every adjacent
+variable is directly connected to its neighbours is the encoding of standing
+domino pieces.
+
+It is possible to modify the \emph{causal graph} with an \emph{intervention},
+in the example the domino piece $X_2$ is glued to the floor, removing the
+direct connections from other pieces to $X_2$, but possibly keeping a
+connection from $X_2$ to the adjacent (in case an external user can still force
+$X_2$ to fall).
+
+A \emph{perfect (``surgical'', ``atomic'') intervention} on a set of variables
+$X \subseteq V$, is an external enforced change of the system (eg. the
+previous example).
+
+A \emph{confounder} is a latent common cause:
+
+\begin{mybox}
+  $H$ is a confounder of $X$ and $Y$ if:
+  \begin{enumerate}
+    \item $H$ causes $X$ directly w.r.t. $\{X, Y, H\}$
+    \item $H$ causes $Y$ directly w.r.t. $\{X, Y, H\}$
+  \end{enumerate}
+\end{mybox}
+
+We will denote latent confounders by \emph{bidirected edges} in a causal graph.
+
+\section{Defining causality in terms of probabilities}
+
+\emph{Simpson's paradox} shows that if we interpret the probabilities as causes
+we may make wrong decisions. As an example, shows the recovery rate of a drug
+test in which depending on the groups separation the most probable outcome
+changes.
+
+\begin{mybox}
+\begin{enumerate}
+  \item The probability of recovery is higher for patients that took the drug
+    \begin{align}
+      p(\text{recovery}|\text{drug}) > p(\text{recovery}|\text{no drug})
+    \end{align}
+  \item For both male and female patients the relation was oposite
+    \begin{align}
+      p(\text{recovery}|\text{drug, male}) <& p(\text{recovery}|\text{no drug,
+      male}) \\
+      p(\text{recovery}|\text{drug, female}) <& p(\text{recovery}|\text{no drug,
+      female})
+    \end{align}
+\end{enumerate}
+\end{mybox}
+
+\emph{endogenous variables} are binary variables that we are interested in.
+
+\emph{Exogenous variables} are latent, independent binary variables that affect
+externally the state of our endogeneous variables.
+
+A \emph{Structureal Causal Model (SCM)}, also knwon as \emph{Structural
+Equation Model (SEM)}, is a tuple \dots
+
+There is one Structural equations  per endogenous variable.
+
+\begin{enumerate}
+  \item a product of standard measures \dots
+  \item a product of standard measures \dots
+  \item Measurable mapping \dots
+  \item A product probbility measure\dots
+\end{enumerate}
+
+An augmented functional graph $G^a(M)$ depicts the exogenous variables while
+the functional graph $G(M)$ doesn't.
+
+\begin{mybox}
+  If $M$ has no \emph{self-loops}, the causal graph of $M$ is a subgraph of the
+  functional graph $G(M)$.
+\end{mybox}
+
+\begin{definition}
+We call the family of sets of probability distributions of the solutions of
+$M_{do(l,E_l)}$ \dots
+\end{definition}
+
+some of the previous points are teh basic difference between causal models and
+probabilistic models.
+
+We donote a marginalization of the model $M$ with respect two variables $X_2$
+and $X_4$ as $M^{\backslash\{2,4\}}$.
+
+See the following extra references \cite{de2013global}, and
+\cite{bongers2018random}, \cite{blom2018generalized},
+Bongers et al., 2018.
+
+
+\begin{definition}
+  Definitions of: Independence and conditional independence
+\end{definition}
+
+\begin{definition}
+  Definition of: nodes blocking a path
+\end{definition}
+
+\begin{theorem}
+  For an \emph{acyclic} SCM, \dots
+\end{theorem}
+
+\emph{Reichenbach's} principle of common cause, the dependence $X | Y$
+
+The Reichenbach's Principe may fail in case of \emph{selection bias} (related
+with the explaining away problem)
+
+
+\section{Causal Inference: Predicting Causal Effects}
+
+\begin{theorem}
+  Back-Door Criterion \cite{pearl2000causal}
+\end{theorem}
+
+\section{Resolving Simpson's paradox}
+
+It is important to realize that ``seing'' is not the same as ``doing''.
+
+\begin{itemize}
+  \item $p(R = 1|D = 1)$: the probability that somebody recovers, given the
+    observation that the person took the drug.
+  \item $p(R = 1| \text{do}(D=1))$: the probability that somebody recovers, if
+    we force the person to take the drug.
+\end{itemize}
+
+In practice randomized control trial
+
+\begin{mybox}
+  A \textbf{randomized controlled trial} (or randomized control trial;[2] RCT) is a type
+of scientific (often medical) experiment which aims to reduce bias when testing
+a new treatment. The people participating in the trial are randomly allocated
+to either the group receiving the treatment under investigation or to a group
+receiving standard treatment (or placebo treatment) as the control.
+Randomization minimises selection bias and the different comparison groups
+allow the researchers to determine any effects of the treatment when compared
+with the no treatment (control) group, while other variables are kept constant.
+The RCT is often considered the gold standard for a clinical trial. RCTs are
+often used to test the efficacy or effectiveness of various types of medical
+intervention and may provide information about adverse effects, such as drug
+reactions. Random assignment of intervention is done after subjects have been
+assessed for eligibility and recruited, but before the intervention to be
+studied begins. -- \textbf{Wikipedia}
+\end{mybox}
+
+\section{Causal Discovery: from data to causal graph}
+
+Randomized controlled trials \cite{fisher1935design} are one solution to avoid
+previously seen problems.
+
+\begin{enumerate}
+  \item Divide patients into two groups: treatment and control randomly
+  \item Patients with the treatment group are forced to take a drug, and
+    patients in the group are forced to not take the drug (but to take a
+    placebo instead): $D = C$
+  \item Estimating the causal effect of the drug now becomes a standard \dots
+  \item \dots
+\end{enumerate}
+
+\subsection{Local Causal Discovery (LCD)}
+
+Simple method that Joris Mooij likes
+
+\section{Practical aplication}
+
+It is possible to apply $k$-fold Cross-validation to the observational data and
+interventional data in order to estimate the test performance.
+
+\section{Conclusions}
+
+Additional readings: Causality: Models reasoning and inference, pearl 2000.
+Constraint-based causal discovery for non-linear
+
+\begin{itemize}
+  \item Elements of causal inference, foundations and learning algorithms by
+    Peters, Janzing, Scholkopf 2017 %\cite{peters2017elements}
+  \item Causation, prediction and search by spirtes, glymour, scheines 2000
+    %\cite{spirtes2000causation}
+  \item correlation and causation by Wrights 1921
+  \item Causal inference in statistics: an overview by Pearl 2009
+  \item Simpson's paradox: an anatomy by Pearl 1999 %\cite{pearl1999simpson}
+  \item Causality: models, reasoning and inference by Pearl 2000
+    %\cite{pearl2003causality}
+  \item Theoretical aspects of cyclic structural causal models by
+    Bongers, Peters, Scholkopf, Mooij 2018 %\cite{bongers1611theoretical}
+  \item Markov properties for graphical models with cycles and latent
+    variables by Forré, and Mooij 2017 %\cite{forre2017markov}
+\end{itemize}
+
+Some possible aplications of Causal inference could be:
+
+\begin{itemize}
+  \item Transfer learning
+  \item Domain adaptation
+  \item Reinforcement learning
+\end{itemize}
+
+What tools or framewors: \textbf{there are no tools yet}, R package for
+individual methods. Literature and the implementations are scattered,
+\textbf{necessary to unify!}.
