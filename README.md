@@ -27,6 +27,7 @@ Madrid](http://mlss.ii.uam.es/mlss2018/index.html), Spain from Aug. 27 to Sep.
 ,[slides3](slides/michael_osborne_bayesian_optimization_and_prob_numerics/osborne3.pdf)
 - **Generative Adversarial Networks** by Sebastian Nowozin
   [slides1](slides/sebastian_nowozin_gans/gans.pdf)
+- **Machine Learning and Causal Inference for Decision Support** by Suchi Saria [slides](slides/suchi_saria_ml_causal_inference_decision/saria.pdf)
 
 
 ## Schedule
