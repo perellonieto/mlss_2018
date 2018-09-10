@@ -4,17 +4,17 @@ This are my own summary notes of the [MLSS 2018 held at Universidad Autónoma de
 Madrid](http://mlss.ii.uam.es/mlss2018/index.html), Spain from Aug. 27 to Sep.
 7, 2018.
 
-## Revised notes
-
-- I do not have currently any clean notes. If I have time, I will try to clean some of
-the sections and make sure that they do not include wrong information.
-
 ## Draft notes
 
 - [My draft notes in pdf](main.pdf): These notes may contain wrong information,
   and should be used only as a reference for further research. The table of
 contents may be useful to have a brief idea about the full content of the
 Summer School.
+
+## Revised notes
+
+- I do not have currently any clean notes. If I have time, I will try to clean some of
+the sections and make sure that they do not include wrong information.
 
 ## Available material
 
