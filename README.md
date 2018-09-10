@@ -44,6 +44,10 @@ aforementioned web site.
 - **Generative Adversarial Networks** by Sebastian Nowozin
   [slides1](slides/sebastian_nowozin_gans/gans.pdf)
 - **Machine Learning and Causal Inference for Decision Support** by Suchi Saria [slides](slides/suchi_saria_ml_causal_inference_decision/saria.pdf)
+- **Kernel Methods** by Arthur Gretton 
+[slides1](slides/arthur_gretton_kernel_methods/gretton1.pdf)
+,[slides2](slides/arthur_gretton_kernel_methods/gretton2.pdf)
+,[slides3](slides/arthur_gretton_kernel_methods/gretton3.pdf)
 
 
 ## Schedule
