@@ -1,5 +1,6 @@
 \documentclass{book}
-\usepackage[nottoc,numbib]{tocbibind}
+\usepackage{tocbibind}
+%\usepackage[nottoc,numbib]{tocbibind}
 \usepackage[left=2cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[linktocpage=true]{hyperref}
@@ -8,9 +9,6 @@
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.9}
 % Solves some problems with apalike
-%\usepackage[square,numbers,sectionbib]{natbib}
-\usepackage{natbib}
-%\usepackage{chapterbib}
 \usepackage{bm}
 
 \usepackage[toc,seeautonumberlist,acronym]{glossaries}
@@ -19,6 +17,9 @@
 \include{latex/macros/notesPerelloNieto}
 \include{latex/macros/graphsPerelloNieto}
 \include{acronyms}
+
+\usepackage[sectionbib]{natbib}
+\usepackage{chapterbib}
 
 %\include{glossary}
 %% GLOSSARY
@@ -37,15 +38,14 @@
 \date{August 27--September 7, 2018}
 
 \begin{document}
+\frontmatter
 
 \maketitle
 \tableofcontents
 
 \printglossary[type=\acronymtype] % prints just the list of acronyms
 
-\bibliographystyle{apalike}
-\bibliography{references}
-
+\mainmatter
 \include{chapters/chap1}
 \include{chapters/chap2}
 \include{chapters/chap3}
