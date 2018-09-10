@@ -6,7 +6,8 @@ Madrid](http://mlss.ii.uam.es/mlss2018/index.html), Spain from Aug. 27 to Sep.
 
 ## Draft notes
 
-- [My draft notes in pdf](main.pdf): These notes may contain wrong information,
+- [My draft notes in pdf](main.pdf)
+  ([Download pdf](https://github.com/perellonieto/mlss_2018/raw/master/main.pdf)): These notes may contain wrong information,
   and should be used only as a reference for further research. The table of
 contents may be useful to have a brief idea about the full content of the
 Summer School.
